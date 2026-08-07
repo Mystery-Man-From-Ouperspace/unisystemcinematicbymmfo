@@ -315,8 +315,8 @@ export class unisystemActorSheet extends ActorSheet {
 
         // Create penalty tags from Resource Loss Status
         let penaltyTags = []
-        if (actorData.endurance_points.loss_toggle) {penaltyTags.push(`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.Endurance Loss`)+` ${actorData.endurance_points.loss_penalty}</div>`)}
-        if (actorData.essence.loss_toggle) {penaltyTags.push(`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.Essence Loss`)+` ${actorData.essence.loss_penalty}</div>`)}
+        // if (actorData.endurance_points.loss_toggle) {penaltyTags.push(`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.Endurance Loss`)+` ${actorData.endurance_points.loss_penalty}</div>`)}
+        // if (actorData.essence.loss_toggle) {penaltyTags.push(`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.Essence Loss`)+` ${actorData.essence.loss_penalty}</div>`)}
         
         // Create Classes for Dialog Box
         // let mode = game.settings.get("unisystemcinematicbymmfo", "light-mode") ? "light-mode" : ""
@@ -415,7 +415,7 @@ export class unisystemActorSheet extends ActorSheet {
                         let statusPenalties = actorData.endurance_points.loss_penalty + actorData.essence.loss_penalty
 
                         // Calculate total modifier to roll
-                        let rollMod = (attributeValue + skillValue + qualityValue + userInputModifier) - drawbackValue + statusPenalties
+                        let rollMod = (attributeValue + skillValue + qualityValue + userInputModifier) - drawbackValue // + statusPenalties
 
                         // Roll Dice
                         let roll = new Roll('1d10')
