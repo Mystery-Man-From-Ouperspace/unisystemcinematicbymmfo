@@ -19,8 +19,8 @@
     src: url(../fonts/FormataCondensed_Italic.ttf);
 }
 @font-face {
-    font-family: "DemocraticaBold";
-    src: url(../fonts/Democratica%20Bold.ttf);
+    font-family: "MasonRegular";
+    src: url(../fonts/Mason%20Regular.ttf);
 }
 @font-face {
     font-family: "AlexaStdRegular";
@@ -133,7 +133,7 @@
  .unisystemcinematicbymmfo.buffy h2,
  .buffy .unisystemcinematicbymmfo-dialog-menu h1,
  .buffy .unisystemcinematicbymmfo-dialog-menu h2 {
-     font-family: "DemocraticaBold";
+     font-family: "MasonRegular";
      width: 100%;
  }
 
@@ -528,7 +528,7 @@
      right: 0;
      background: rgba(41, 0, 0, 0.555);
      z-index: 5;
-     font-family: "DemocraticaBold";
+     font-family: "MasonRegular";
      font-size: x-large;
      border-radius: 3px;
      padding: 2px;
@@ -693,7 +693,7 @@
  }
  .unisystemcinematicbymmfo.angel #characterTypeSelect,
  .unisystemcinematicbymmfo.buffy #characterTypeSelect {
-     font-family: "DemocraticaBold";
+     font-family: "MasonRegular";
      font-size: x-large;
      text-align: center !important;
  }
@@ -770,7 +770,7 @@
      flex-direction: column;
      align-items: center;
      justify-content: center;
-     font-family: "DemocraticaBold";
+     font-family: "MasonRegular";
  }
   .unisystemcinematicbymmfo.ghostsofalbion .encumbrance-resource {
      display: flex;
