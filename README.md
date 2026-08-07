@@ -25,13 +25,13 @@ https://www.drivethrurpg.com/browse/pub/10/Eden-Studios/subcategory/57_60/All-Fl
 ****
 
 <figure>
-    <img src="images/unisystemcinematicxmmfo-dark-mode.png">
+    <img src="images/unisystemcinematicbymmfo-dark-mode.png">
     <figcaption>Dark Mode (Default Setting)</figcaption>
 </figure>
 
 ****
 
 <figure>
-    <img src="images/unisystemcinematicmmfo-light-mode.png">
+    <img src="images/unisystemcinematicbymmfo-light-mode.png">
     <figcaption>Light Mode (Enabled through System Settings)</figcaption>
 </figure>
