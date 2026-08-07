@@ -59,7 +59,7 @@ export class unisystemActor extends Actor {
         data.armyofdarknesscharacterTypeValues[armyofdarknesschaTypeLabel].attributePoints.value = this._calculateAttributePoints(data)
         data.armyofdarknesscharacterTypeValues[armyofdarknesschaTypeLabel].qualityPoints.value = this._calculateQualityPoints(data)
         data.armyofdarknesscharacterTypeValues[armyofdarknesschaTypeLabel].drawbackPoints.value = this._calculateDrawbackPoints(data)
-        data.armyofdarknesscharacterTypeValues[warmyofdarknesschaTypeLabel].skillPoints.value = this._calculateSkillPoints(data)
+        data.armyofdarknesscharacterTypeValues[armyofdarknesschaTypeLabel].skillPoints.value = this._calculateSkillPoints(data)
         data.armyofdarknesscharacterTypeValues[armyofdarknesschaTypeLabel].metaphysicsPoints.value = this._calculateMetaphysicsPoints(data)
       }
       if(cityofheroeschaTypeLabel != undefined) {
