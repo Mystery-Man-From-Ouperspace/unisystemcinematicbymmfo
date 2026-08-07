@@ -335,10 +335,6 @@ export class unisystemActorSheet extends ActorSheet {
                                 <div>
                                     <p>`+game.i18n.localize("UNISYSTEMCINEMATIC.Apply modifiers")+`</p>
                                     
-                                    <ul>
-                                        <li>`+game.i18n.localize("UNISYSTEMCINEMATIC.Simple Test")+`</li>
-                                        <li>`+game.i18n.localize("UNISYSTEMCINEMATIC.Difficult Test")+`</li>
-                                    </ul>
                                 </div>
                             </div>
 
@@ -349,15 +345,6 @@ export class unisystemActorSheet extends ActorSheet {
 
                             <table>
                                 <tbody>
-                                    <tr>
-                                        <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Attribute Test")+`</td>
-                                        <td class="table-center-align">
-                                            <select id="attributeTestSelect" name="attributeTest">
-                                                <option value="Simple">`+game.i18n.localize("UNISYSTEMCINEMATIC.Simple")+`</option>
-                                                <option value="Difficult">`+game.i18n.localize("UNISYSTEMCINEMATIC.Difficult")+`</option>
-                                            </select>
-                                        </td>
-                                    </tr>
                                     <tr>
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Roll Modifier")+`</td>
                                         <td class="table-center-align"><input class="attribute-input" type="number" value="0" name="inputModifier" id="inputModifier"></td>
@@ -401,21 +388,22 @@ export class unisystemActorSheet extends ActorSheet {
                     label: game.i18n.localize("UNISYSTEMCINEMATIC.Roll"),
                     callback: async html => {
                         // Grab the selected options
-                        let attributeTestSelect = html[0].querySelector('#attributeTestSelect').value
+                        // let attributeTestSelect = html[0].querySelector('#attributeTestSelect').value
                         let userInputModifier = Number(html[0].querySelector('#inputModifier').value)
                         let selectedSkill = this.actor.items.get(html[0].querySelector('#skillSelect').value)
                         let selectedQuality = this.actor.items.get(html[0].querySelector('#qualitySelect').value)
                         let selectedDrawback = this.actor.items.get(html[0].querySelector('#drawbackSelect').value)
 
                         // Set values for options
-                        let attributeValue = attributeTestSelect === game.i18n.localize("UNISYSTEMCINEMATIC.Simple") ? actorData[attributeLabel.toLowerCase()].value * 2 : actorData[attributeLabel.toLowerCase()].value
+                        // let attributeValue = attributeTestSelect === game.i18n.localize("UNISYSTEMCINEMATIC.Simple") ? actorData[attributeLabel.toLowerCase()].value * 2 : actorData[attributeLabel.toLowerCase()].value
+                        let attributeValue = actorData[attributeLabel.toLowerCase()].value
                         let skillValue = selectedSkill != undefined ? selectedSkill.system.level : 0
                         let qualityValue = selectedQuality != undefined ? selectedQuality.system.cost : 0
                         let drawbackValue = selectedDrawback != undefined ? selectedDrawback.system.cost : 0
                         let statusPenalties = actorData.endurance_points.loss_penalty + actorData.essence.loss_penalty
 
                         // Calculate total modifier to roll
-                        let rollMod = (attributeValue + skillValue + qualityValue + userInputModifier) - drawbackValue // + statusPenalties
+                        let rollMod = (attributeValue + skillValue + qualityValue + userInputModifier) - drawbackValue // + statusPenalties (Cinematic)
 
                         // Roll Dice
                         let roll = new Roll('1d10')
@@ -426,7 +414,8 @@ export class unisystemActorSheet extends ActorSheet {
                         let totalResult = Number(roll.result) + rollMod
 
                         // Create Chat Message Content
-                        let tags = [`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.${attributeTestSelect}`)+` `+game.i18n.localize("UNISYSTEMCINEMATIC.Test")+`</div>`]
+                        // let tags = [`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.${attributeTestSelect}`)+` `+game.i18n.localize("UNISYSTEMCINEMATIC.Test")+`</div>`]
+                        let tags = [``]
                         let ruleOfDiv = ``
                         if (userInputModifier != 0) {tags.push(`<div>`+game.i18n.localize("UNISYSTEMCINEMATIC.User Modifier")+` ${userInputModifier >= 0 ? "+" : ''}${userInputModifier}</div>`)}
                         if (selectedSkill != undefined) {tags.push(`<div>${selectedSkill.name} ${selectedSkill.system.level >= 0 ? '+' : ''}${selectedSkill.system.level}</div>`)}

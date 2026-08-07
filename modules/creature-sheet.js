@@ -148,13 +148,15 @@ export class unisystemCreatureSheet extends ActorSheet {
 
     _createCharacterPointDivs() {
         let powerDiv = document.createElement('div')
-        let characterTypePath = this.actor.system.characterTypes[this.actor.system.characterType]
+        // let characterTypePath = this.actor.system.characterTypes[this.actor.system.characterType]
 
         // Construct and assign div elements to the headers
+        /*
         if(characterTypePath != undefined) {
             powerDiv.innerHTML = `- [${this.actor.system.power}]`
             this.form.querySelector('#aspect-header').append(powerDiv)
         }
+        */
     }
 
     _onAttributeRoll(event) {
@@ -190,25 +192,12 @@ export class unisystemCreatureSheet extends ActorSheet {
                                 <div>
                                     <p>`+game.i18n.localize("UNISYSTEMCINEMATIC.Apply modifiers creature")+`</p>
                                     
-                                    <ul>
-                                        <li>`+game.i18n.localize("UNISYSTEMCINEMATIC.Simple Test")+`</li>
-                                        <li>`+game.i18n.localize("UNISYSTEMCINEMATIC.Difficult Test")+`</li>
-                                    </ul>
                                 </div>
                             </div>
 
 
                             <table>
                                 <tbody>
-                                    <tr>
-                                        <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Attribute Test")+`</td>
-                                        <td class="table-center-align">
-                                            <select id="attributeTestSelect" name="attributeTest">
-                                                <option value="Simple">`+game.i18n.localize("UNISYSTEMCINEMATIC.Simple")+`</option>
-                                                <option value="Difficult">`+game.i18n.localize("UNISYSTEMCINEMATIC.Difficult")+`</option>
-                                            </select>
-                                        </td>
-                                    </tr>
                                     <tr>
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Roll Modifier")+`</td>
                                         <td class="table-center-align"><input class="attribute-input" type="number" value="0" name="inputModifier" id="inputModifier"></td>
@@ -243,13 +232,14 @@ export class unisystemCreatureSheet extends ActorSheet {
                     label: game.i18n.localize("UNISYSTEMCINEMATIC.Roll"),
                     callback: async html => {
                         // Grab the selected options
-                        let attributeTestSelect = html[0].querySelector('#attributeTestSelect').value
+                        // let attributeTestSelect = html[0].querySelector('#attributeTestSelect').value
                         let userInputModifier = Number(html[0].querySelector('#inputModifier').value)
                         let selectedSkill = this.actor.items.get(html[0].querySelector('#skillSelect').value)
                         let selectedAspect = this.actor.items.get(html[0].querySelector('#aspectSelect').value)
 
                         // Set values for options
-                        let attributeValue = attributeTestSelect === game.i18n.localize("UNISYSTEMCINEMATIC.Simple") ? this.actor.system[attributeLabel.toLowerCase()].value * 2 : this.actor.system[attributeLabel.toLowerCase()].value
+                        // let attributeValue = attributeTestSelect === game.i18n.localize("UNISYSTEMCINEMATIC.Simple") ? this.actor.system[attributeLabel.toLowerCase()].value * 2 : this.actor.system[attributeLabel.toLowerCase()].value
+                        let attributeValue = this.actor.system[attributeLabel.toLowerCase()].value
                         let skillValue = selectedSkill != undefined ? selectedSkill.system.level : 0
                         let aspectValue = selectedAspect != undefined ? selectedAspect.system.power : 0
 
@@ -265,7 +255,8 @@ export class unisystemCreatureSheet extends ActorSheet {
                         let totalResult = Number(roll.result) + rollMod
 
                         // Create Chat Message Content
-                        let tags = [`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.${attributeTestSelect}`)+` `+game.i18n.localize("UNISYSTEMCINEMATIC.Test")+`</div>`]
+                        // let tags = [`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.${attributeTestSelect}`)+` `+game.i18n.localize("UNISYSTEMCINEMATIC.Test")+`</div>`]
+                        let tags = [``]
                         let ruleOfDiv = ``
                         if (userInputModifier != 0) {tags.push(`<div>`+game.i18n.localize("UNISYSTEMCINEMATIC.User Modifier")+` ${userInputModifier >= 0 ? '+' : ''}${userInputModifier}</div>`)}
                         if (selectedSkill != undefined) {tags.push(`<div>${selectedSkill.name} ${selectedSkill.system.level >= 0 ? '+' : ''}${selectedSkill.system.level}</div>`)}
