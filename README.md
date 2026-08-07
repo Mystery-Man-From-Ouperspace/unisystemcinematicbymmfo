@@ -1,10 +1,10 @@
 # UNISYSTEMCINEMATIC BY MMFO
 
-A fanmade FoundryVTT system to play AFMBE, Armageddon, Terra Primate, WitchCraft, & Conspiracy X 2.0 by Eden Studios.
+A fanmade FoundryVTT system to play Buffy, Angel, Army of Darkness, City of Heroes, Ghosts of Albion, & Eldritch Skies by Eden Studios.
 
 (No Eden Studios IP infringement).
 
-Just select your game (All Flesh Must Be Eaten, Armageddon, Terra Primate, WitchCraft, or Conspiracy X 2.0) in the Foundry VTT game settings.
+Just select your game (Buffy, Angel, Army of Darkness, City of Heroes, Ghosts of Albion, or Eldritch Skies) in the Foundry VTT game settings.
 
 You can purchase the rulebooks from their website https://www.edenstudios.net/ or from DrivethruRPG at
 https://www.drivethrurpg.com/fr/publisher/10/eden-studios
@@ -25,13 +25,13 @@ https://www.drivethrurpg.com/browse/pub/10/Eden-Studios/subcategory/57_60/All-Fl
 ****
 
 <figure>
-    <img src="images/conspiracyxmmfo-dark-mode.png">
+    <img src="images/unisystemcinematicxmmfo-dark-mode.png">
     <figcaption>Dark Mode (Default Setting)</figcaption>
 </figure>
 
 ****
 
 <figure>
-    <img src="images/conspiracyxmmfo-light-mode.png">
+    <img src="images/unisystemcinematicmmfo-light-mode.png">
     <figcaption>Light Mode (Enabled through System Settings)</figcaption>
 </figure>
