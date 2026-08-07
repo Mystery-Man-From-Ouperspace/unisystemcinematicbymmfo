@@ -1,0 +1,43 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <div class="item-sheet-header">
+        <h1 class="item-header-container">
+            <img class="item-img" src="{{item.img}}" data-edit="img">
+            <input type="text" name="name" value="{{item.name}}" placeholder="{{ localize 'Name' }}">
+        </h1>
+    </div>
+
+    <section>
+        <div class="description-container">
+            <div class="item-attribute-sidebar">
+                <h2>{{ localize "UNISYSTEMCINEMATIC.Attributes" }}</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.Type" }}</th>
+                            <td>
+                            <select id="typeSelect" name="system.type" data-type="String">
+                                {{#select item.system.type}}
+                                    {{#each item.system.types as |types key|}}
+                                        <option value="{{key}}">{{ localize (concat 'UNISYSTEMCINEMATIC.' types) }}</option>
+                                    {{/each}}
+                                {{/select}}
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.Level" }}</th>
+                            <td><input type="number" name="system.level" value="{{item.system.level}}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="item-description-sidebar">
+                <h2 class="item-desc">{{ localize "UNISYSTEMCINEMATIC.Description" }}</h2>
+                {{editor descriptionHTML target="system.description" button=true editable=editable engine="prosemirror"}}
+
+            </div>
+        </div>
+    </section>
+</form>

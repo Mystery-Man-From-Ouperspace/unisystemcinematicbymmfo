@@ -1,0 +1,804 @@
+{
+    "Actor": {
+        "types": ["character", "creature", "cell", "vehicle"],
+        "templates": {
+            "attributes": {
+                "buffycharacterType": 0,
+                "angelcharacterType": 0,
+                "armyofdarknesscharacterType": 0,
+                "ghostsofalbioncharacterType": 0,
+                "cityofheroescharacterType": 0,
+                "eldritchskiescharacterType": 0,
+                "buffycharacterTypes": [
+                    "Hero",
+                    "WhiteHat",
+                    "ExperiencedHero"
+                ],
+                "buffycharacterTypeValues": {
+                    "Hero": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 10
+                        }
+                    },
+                    "WhiteHat": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 15
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 15
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 20
+                        }
+                    },
+                    "ExperiencedHero": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 40
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 20
+                        }
+                    }
+                },
+                "angelcharacterTypes": [
+                    "Champion",
+                    "Investigator",
+                    "Veteran"
+                ],
+                "angelcharacterTypeValues": {
+                    "Champion": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 30
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 10
+                        }
+                    },
+                    "Investigator": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 15
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 20
+                        }
+                    },
+                    "Veteran": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 45
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 20
+                        }
+                    }
+                },
+                "armyofdarknesscharacterTypes": [
+                    "Hero",
+                    "PrimitiveScrewheads",
+                    "ExperiencedHero"
+                ],
+                "armyofdarknesscharacterTypeValues": {
+                    "Hero": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 10
+                        }
+                    },
+                    "PrimitiveScrewheads": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 15
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 15
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 20
+                        }
+                    },
+                    "ExperiencedHero": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 40
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 20
+                        }
+                    }
+                },
+                "eldritchskiescharacterTypes": [
+                    "Operatives",
+                    "Civilians",
+                    "Veterans"
+                ],
+                "eldritchskiescharacterTypeValues": {
+                    "Operatives": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 30
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 10
+                        }
+                    },
+                    "Civilians": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 15
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 20
+                        }
+                    },
+                    "Veterans": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 30
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 40
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 10
+                        }
+                    }
+                },
+                "ghostsofalbioncharacterTypes": [
+                    "Apprentice",
+                    "Journeyman",
+                    "Master"
+                ],
+                "ghostsofalbioncharacterTypeValues": {
+                    "Apprentice": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 15
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 15
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 20
+                        }
+                    },
+                    "Journeyman": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 10
+                        }
+                    },
+                    "Master": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 30
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 10
+                        }
+                    }
+                },
+                "cityofheroescharacterTypes": [
+                    "Hero",
+                    "WhiteHat",
+                    "ExperiencedHero"
+                ],
+                "cityofheroescharacterTypeValues": {
+                    "Hero": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 20
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 10
+                        }
+                    },
+                    "WhiteHat": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 15
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 15
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 20
+                        }
+                    },
+                    "ExperiencedHero": {
+                        "attributePoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "qualityPoints": {
+                            "value": 0,
+                            "max": 25
+                        },
+                        "drawbackPoints": {
+                            "value": 0,
+                            "max": 10
+                        },
+                        "skillPoints": {
+                            "value": 0,
+                            "max": 40
+                        },
+                        "metaphysicsPoints": {
+                            "value": 0,
+                            "max": 0
+                        },
+                        "dramaPoints": {
+                            "value": 0,
+                            "max": 20
+                        }
+                    }
+                },
+                "profession": "",
+                "hp": {
+                    "value": 0,
+                    "max": 0,
+                    "loss_toggle": false,
+                    "loss_penalty": 0
+                },
+                "endurance_points": {
+                    "value": 0,
+                    "max": 0,
+                    "loss_toggle": false,
+                    "loss_penalty": 0
+                },
+                "speed": {
+                    "value": 0,
+                    "max": 0,
+                    "loss_toggle": false,
+                    "loss_penalty": 0
+                },
+                "essence": {
+                    "value": 0,
+                    "max": 0,
+                    "loss_toggle": false,
+                    "loss_penalty": 0
+                },
+                "initiative": {
+                    "value": 0
+                },
+                "strength": {
+                    "value": 0,
+                    "halfValue": 0,
+                    "max": 0
+                },
+                "dexterity": {
+                    "value": 0,
+                    "max": 0
+                },
+                "constitution": {
+                    "value": 0,
+                    "max": 0
+                },
+                "intelligence": {
+                    "value": 0,
+                    "max": 0
+                },
+                "perception": {
+                    "value": 0,
+                    "max": 0
+                },
+                "willpower": {
+                    "value": 0,
+                    "max": 0
+                },
+                "character_points": {
+                    "value": 0,
+                    "max": 0
+                },
+                "encumbrance": {
+                    "value": 0,
+                    "max": 0,
+                    "lifting_capacity": 0,
+                    "level": 0
+                },
+                "drama": {
+                    "value": 0,
+                    "max": 0
+                }
+            },
+            "bio": {
+                "sex": "",
+                "age": 0,
+                "height": "",
+                "weight": 0,
+                "hair": "",
+                "eyes": "",
+                "htmlFields": "",
+                "contacts": ""
+            },
+            "cell_member": {
+                "show": false,
+                "name": "",
+                "lvl": 0,
+                "RP": 0,
+                "mil": false,
+                "int": false,
+                "sci": false,
+                "crm": false,
+                "law": false,
+                "med": false,
+                "par": false,
+                "civ": false
+            }
+        },
+        "character": {
+            "templates": ["attributes", "bio"]
+        },
+        "creature": {
+            "templates": ["attributes", "bio"],
+            "power": 0
+        },
+        "cell": {
+            "biography": "",
+            "leader": {
+                "templates" : ["cell_member"]
+            },
+            "member1" : {
+                "templates" : ["cell_member"]
+            },
+            "member2" : {
+                "templates" : ["cell_member"]
+            },
+            "member3" : {
+                "templates" : ["cell_member"]
+            },
+            "member4" : {
+                "templates" : ["cell_member"]
+            },
+            "member5" : {
+                "templates" : ["cell_member"]
+            },
+            "member6" : {
+                "templates" : ["cell_member"]
+            },
+            "locationA": {
+                "name": ""
+            },
+            "locationB": {
+                "name": ""
+            },
+            "locationC": {
+                "name": ""
+            },
+            "locationD": {
+                "name": ""
+            }
+        },
+        "vehicle": {
+            "biography": "",
+            "weight":  0,
+            "speed": 0,
+            "acceleration": 0,
+            "range": 0,
+            "toughness": 0,
+            "handling": 0,
+            "accuracy": 0,
+            "cost": 0,
+            "availability": "",
+            "damage_capacity": 0,
+            "armor_value": 0
+        }
+    },
+    "Item": {
+        "types": ["quality", "drawback", "skill", "power", "aspect", "maneuver", "weapon", "item", "locations", "facilities", "staff", "weaponery", "gear", "vehicles", "science", "medical", "restricted"],
+        "htmlFields": ["description"],
+        "templates": {
+            "weapon": {
+                "range": "",
+                "damage": 0,
+                "damage_cha_multiplier": "none",
+                "damage_string": "",
+                "ammo_type": "",
+                "damage_type": "",
+                "damage_types": ["None", "Two-Handed", "Slashing", "Stabbing", "Normal Bullet", "Hollow Point", "Armor Piercing", "Shotgun", "Explosive", "Poison", "Corrosive"],
+                "damage_types_obj": {
+                    "none": "None",
+                    "twoHanded": "Two-Handed",
+                    "slashing": "Slashing",
+                    "stabbing": "Stabbing",
+                    "bullets": "Normal Bullet",
+                    "hollowPoint": "Hollow Point",
+                    "armorPiercing": "Armor Piercing",
+                    "shotgun": "Shotgun",
+                    "explosive": "Explosive",
+                    "poison": "Poison",
+                    "corrosive": "Corrosive"
+                },
+                "damage_characteristics": {
+                    "strength": "Strength",
+                    "dexterity": "Dexterity",
+                    "constitution": "Constitution",
+                    "intelligence": "Intelligence",
+                    "perception": "Perception",
+                    "willpower": "Willpower"
+                },
+                "capacity": {
+                    "value": 0,
+                    "max": 0
+                }
+            },
+            "common": {
+                "encumbrance": 0,
+                "cost": 0,
+                "availability": "",
+                "availabilityOptions": ["Common", "Uncommon", "Rare"],
+                "description": "",
+                "resource_bonus": {
+                    "hp": 0,
+                    "endurance_points": 0,
+                    "speed": 0,
+                    "essence": 0,
+                    "initiative": 0
+                }
+            },
+            "cell_data": {
+                "rp": "",
+                "space": "",
+                "prerequisite": "",
+                "qty": 1,
+                "locationOptions": ["Borrowed", "LocationA", "LocationB", "LocationC", "LocationD"],
+                "location": "1"
+            }
+        },
+        "quality": {
+            "templates": ["common"],
+            "types": ["Quality", "Pulling Strings"],
+            "type": ""
+        },
+        "drawback": {
+            "templates": ["common"]
+        },
+        "skill": {
+            "templates": ["common"],
+            "level": 0
+        },
+        "power": {
+            "templates": ["common"],
+            "level": 0,
+            "types": ["Other", "Psychic Ability", "Ritual"],
+            "type": ""
+        },
+        "maneuver": {
+            "templates": ["common"],
+            "bonus": 0,
+            "baseDamages": ""
+        },
+        "aspect": {
+            "templates": ["common"],
+            "power": 0
+        },
+        "weapon": {
+            "templates": ["common", "weapon"]
+        },
+        "item": {
+            "templates": ["common"],
+            "equipped": false,
+            "armor_value": 0,
+            "qty": 1
+        },
+        "locations": {
+          "templates": ["common", "cell_data"]
+        },
+        "facilities": {
+            "templates": ["common", "cell_data"]
+        },
+        "staff": {
+            "templates": ["common", "cell_data"]
+        },
+        "weaponery": {
+            "templates": ["common", "cell_data"],
+            "types": ["Weapons", "Explosives", "Ammunition", "CombatAccessories"],
+            "type": ""
+        },
+        "gear": {
+            "templates": ["common", "cell_data"],
+            "types": ["Surveillance", "IntrusionEquipment", "Electronics", "Software", "PersonnelEquipment"],
+            "type": ""
+        },
+        "vehicles": {
+            "templates": ["common", "cell_data"],
+            "types": ["Vehicles", "VehicleAccessories"],
+            "type": ""
+        },
+        "science": {
+            "templates": ["common", "cell_data"]
+        },
+        "medical": {
+            "templates": ["common", "cell_data"]
+        },
+        "restricted": {
+            "templates": ["common", "cell_data"]
+        }
+    }
+}

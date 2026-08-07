@@ -1,0 +1,35 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <div class="item-sheet-header">
+        <h1 class="item-header-container">
+            <img class="item-img" src="{{item.img}}" data-edit="img">
+            <input type="text" name="name" value="{{item.name}}" placeholder="{{ localize 'Name' }}">
+        </h1>
+    </div>
+
+    <section>
+        <div class="description-container">
+            <div class="item-attribute-sidebar">
+                <h2>{{ localize "UNISYSTEMCINEMATIC.Attributes" }}</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.Bonus" }}</th>
+                            <td><input type="number" name="system.bonus" value="{{item.system.bonus}}"></td>
+                        </tr>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.BaseDamage" }}</th>
+                            <td><input type="text" name="system.baseDamages" value="{{item.system.baseDamages}}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="item-description-sidebar">
+                <h2 class="item-desc">{{ localize "UNISYSTEMCINEMATIC.Description" }}</h2>
+                {{editor descriptionHTML target="system.description" button=true editable=editable engine="prosemirror"}}
+
+            </div>
+        </div>
+    </section>
+</form>

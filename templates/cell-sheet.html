@@ -1,0 +1,1267 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{log 'cell-sheet' this}} 
+    {{!-- Sheet Header --}}
+    <div class="sheet-flex-container">
+        <div class="sheet-sidebar">
+            <div class="header-container">
+                <div class="polaroid-container">
+                    <img class="polaroid" src="systems/unisystemcinematicbymmfo/images/polaroid.png">
+                    <img class="profile-img" data-edit="img" src="{{actor.img}}">
+                    <div class="sheet-nav-container">
+                        <details>
+                            <summary><i class="fas fa-list-dropdown"></i></summary>
+                            <nav class="sheet-nav sheet-tabs tabs" data-group="primary">
+                                <a class="item" data-tab="core">{{ localize "UNISYSTEMCINEMATIC.Core" }}</a>
+                                <a class="item" data-tab="equipment">{{ localize "UNISYSTEMCINEMATIC.Equipment" }}</a>
+                                <a class="item" data-tab="resources">{{ localize "UNISYSTEMCINEMATIC.Resources" }}</a>
+                            </nav>
+                        </details>
+                    </div>
+                    <div class="profile-tags-container">
+                        <div class="tags-flex-container"></div>
+                    </div>
+                </div>
+                <div class="header-info-container">
+                    <div class="info-container">
+                        <h1>
+                            <input class="charname" type="text" name="name" value="{{actor.name}}" placeholder="{{ localize 'Name' }}">
+                        </h1>
+                    </div>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <h2>
+                                    {{ localize "UNISYSTEMCINEMATIC.Current AP"}}
+                                </h2>
+                            </td>
+                            <td>
+                                <h2>
+                                    <input type="number" name="system.leader.lvl" value="{{actor.leader.lvl}}">
+                                </h2>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <h2>
+                    {{ localize "UNISYSTEMCINEMATIC.Cell Members" }}
+                </h2>
+                <div class="leader">
+                    <table>
+                        <tr>
+                            <th class="small-input">
+                            </th >
+                            <th>
+                                {{ localize 'UNISYSTEMCINEMATIC.Leader'}}
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.Lvl" }}
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.RP" }}
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.leader.show" {{checked actor.system.leader.show}}>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="charname" type="text" name="system.leader.name" value="{{actor.leader.name}}" placeholder="{{ localize 'Name' }}">
+                            </td>
+                            <td>
+                                <input type="number" name="system.leader.lvl" value="{{actor.leader.lvl}}">
+                            </td>
+                            <td>
+                                <input type="text" name="system.leader.RP" value="{{actor.leader.RP}}">
+                            </td>
+                        </tr>
+                    </table>
+                    {{ log 'system.leader.show' actor.system.leader.show }}
+                    {{#if actor.system.leader.show}}
+                    <table>
+                        <tr>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/military.png" title="{{ localize 'UNISYSTEMCINEMATIC.Military' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/intelligence.png" title="{{ localize 'UNISYSTEMCINEMATIC.Intelligence2' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/science_and_research.png" title="{{ localize 'UNISYSTEMCINEMATIC.Science & Research' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/criminal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Criminal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/law_enforcement.png" title="{{ localize 'UNISYSTEMCINEMATIC.Law Enforcement' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/media.png" title="{{ localize 'UNISYSTEMCINEMATIC.Media' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/paranormal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Paranormal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/civilian.png" title="{{ localize 'UNISYSTEMCINEMATIC.Civilian' }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.leader.arm" {{checked actor.system.leader.arm}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.leader.int" {{checked actor.system.leader.int}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                   <input type="checkbox" name="system.leader.sci" {{checked actor.system.leader.sci}}>
+                               </div>
+                           </td>
+                           <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.leader.crm" {{checked actor.system.leader.crm}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.leader.law" {{checked actor.system.leader.law}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.leader.med" {{checked actor.system.leader.med}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.leader.par" {{checked actor.system.leader.par}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.leader.civ" {{checked actor.system.leader.civ}}>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    {{/if}}
+                </div>
+                <div class="member1">
+                    <table>
+                        <tr>
+                            <th class="small-input">
+                            </th >
+                            <th>
+                                {{ localize 'UNISYSTEMCINEMATIC.Member'}}&nbsp;1
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.Lvl" }}
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.RP" }}
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member1.show" {{checked actor.system.member1.show}}>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="charname" type="text" name="system.member1.name" value="{{actor.member1.name}}" placeholder="{{ localize 'Name' }}">
+                            </td>
+                            <td>
+                                <input type="number" name="system.member1.lvl" value="{{actor.member1.lvl}}">
+                            </td>
+                            <td>
+                                <input type="text" name="system.member1.RP" value="{{actor.member1.RP}}">
+                            </td>
+                        </tr>
+                    </table>
+                    {{#if actor.system.member1.show}}
+                    <table>
+                        <tr>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/military.png" title="{{ localize 'UNISYSTEMCINEMATIC.Military' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/intelligence.png" title="{{ localize 'UNISYSTEMCINEMATIC.Intelligence2' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/science_and_research.png" title="{{ localize 'UNISYSTEMCINEMATIC.Science & Research' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/criminal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Criminal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/law_enforcement.png" title="{{ localize 'UNISYSTEMCINEMATIC.Law Enforcement' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/media.png" title="{{ localize 'UNISYSTEMCINEMATIC.Media' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/paranormal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Paranormal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/civilian.png" title="{{ localize 'UNISYSTEMCINEMATIC.Civilian' }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member1.arm" {{checked actor.system.member1.arm}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member1.int" {{checked actor.system.member1.int}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                   <input type="checkbox" name="system.member1.sci" {{checked actor.system.member1.sci}}>
+                               </div>
+                           </td>
+                           <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member1.crm" {{checked actor.system.member1.crm}}>
+                                </div>
+                        
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member1.law" {{checked actor.system.member1.law}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member1.med" {{checked actor.system.member1.med}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member1.par" {{checked actor.system.member1.par}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member1.civ" {{checked actor.system.member1.civ}}>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    {{/if}}
+                </div>
+                <div class="member2">
+                    <table>
+                        <tr>
+                            <th class="small-input">
+                            </th >
+                            <th>
+                                {{ localize 'UNISYSTEMCINEMATIC.Member'}}&nbsp;2
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.Lvl" }}
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.RP" }}
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member2.show" {{checked actor.system.member2.show}}>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="charname" type="text" name="system.member2.name" value="{{actor.member2.name}}" placeholder="{{ localize 'Name' }}">
+                            </td>
+                            <td>
+                                <input type="number" name="system.member2.lvl" value="{{actor.member21.lvl}}">
+                            </td>
+                            <td>
+                                <input type="text" name="system.member2.RP" value="{{actor.member2.RP}}">
+                            </td>
+                        </tr>
+                    </table>
+                    {{#if actor.system.member2.show}}
+                    <table>
+                        <tr>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/military.png" title="{{ localize 'UNISYSTEMCINEMATIC.Military' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/intelligence.png" title="{{ localize 'UNISYSTEMCINEMATIC.Intelligence2' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/science_and_research.png" title="{{ localize 'UNISYSTEMCINEMATIC.Science & Research' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/criminal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Criminal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/law_enforcement.png" title="{{ localize 'UNISYSTEMCINEMATIC.Law Enforcement' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/media.png" title="{{ localize 'UNISYSTEMCINEMATIC.Media' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/paranormal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Paranormal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/civilian.png" title="{{ localize 'UNISYSTEMCINEMATIC.Civilian' }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member2.arm" {{checked actor.system.member2.arm}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member2.int" {{checked actor.system.member2.int}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                   <input type="checkbox" name="system.member2.sci" {{checked actor.system.member2.sci}}>
+                               </div>
+                           </td>
+                           <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member2.crm" {{checked actor.system.member2.crm}}>
+                                </div>
+                        
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member2.law" {{checked actor.system.member2.law}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member2.med" {{checked actor.system.member2.med}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member2.par" {{checked actor.system.member2.par}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member2.civ" {{checked actor.system.member2.civ}}>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    {{/if}}
+                </div>
+                <div class="member3">
+                    <table>
+                        <tr>
+                            <th class="small-input">
+                            </th>
+                            <th>
+                                {{ localize 'UNISYSTEMCINEMATIC.Member'}}&nbsp;3
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.Lvl" }}
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.RP" }}
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member3.show" {{checked actor.system.member3.show}}>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="charname" type="text" name="system.member3.name" value="{{actor.member3.name}}" placeholder="{{ localize 'Name' }}">
+                            </td>
+                            <td>
+                                <input type="number" name="system.member3.lvl" value="{{actor.member3.lvl}}">
+                            </td>
+                            <td>
+                                <input type="text" name="system.member3.RP" value="{{actor.member3.RP}}">
+                            </td>
+                        </tr>
+                    </table>
+                    {{#if actor.system.member3.show}}
+                    <table>
+                        <tr>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/military.png" title="{{ localize 'UNISYSTEMCINEMATIC.Military' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/intelligence.png" title="{{ localize 'UNISYSTEMCINEMATIC.Intelligence2' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/science_and_research.png" title="{{ localize 'UNISYSTEMCINEMATIC.Science & Research' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/criminal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Criminal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/law_enforcement.png" title="{{ localize 'UNISYSTEMCINEMATIC.Law Enforcement' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/media.png" title="{{ localize 'UNISYSTEMCINEMATIC.Media' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/paranormal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Paranormal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/civilian.png" title="{{ localize 'UNISYSTEMCINEMATIC.Civilian' }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member3.arm" {{checked actor.system.member3.arm}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member3.int" {{checked actor.system.member3.int}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                   <input type="checkbox" name="system.member3.sci" {{checked actor.system.member3.sci}}>
+                               </div>
+                           </td>
+                           <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member3.crm" {{checked actor.system.member3.crm}}>
+                                </div>
+                        
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member3.law" {{checked actor.system.member3.law}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member3.med" {{checked actor.system.member3.med}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member3.par" {{checked actor.system.member3.par}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member3.civ" {{checked actor.system.member3.civ}}>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    {{/if}}
+                </div>
+                <div class="member4">
+                    <table>
+                        <tr>
+                            <th class="small-input">
+                            </th>
+                            <th>
+                                {{ localize 'UNISYSTEMCINEMATIC.Member'}}&nbsp;4
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.Lvl" }}
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.RP" }}
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member4.show" {{checked actor.system.member4.show}}>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="charname" type="text" name="system.member4.name" value="{{actor.member4.name}}" placeholder="{{ localize 'Name' }}">
+                            </td>
+                            <td>
+                                <input type="number" name="system.member4.lvl" value="{{actor.member4.lvl}}">
+                            </td>
+                            <td>
+                                <input type="text" name="system.member4.RP" value="{{actor.member4.RP}}">
+                            </td>
+                        </tr>
+                    </table>
+                    {{#if actor.system.member4.show}}
+                    <table>
+                        <tr>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/military.png" title="{{ localize 'UNISYSTEMCINEMATIC.Military' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/intelligence.png" title="{{ localize 'UNISYSTEMCINEMATIC.Intelligence2' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/science_and_research.png" title="{{ localize 'UNISYSTEMCINEMATIC.Science & Research' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/criminal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Criminal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/law_enforcement.png" title="{{ localize 'UNISYSTEMCINEMATIC.Law Enforcement' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/media.png" title="{{ localize 'UNISYSTEMCINEMATIC.Media' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/paranormal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Paranormal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/civilian.png" title="{{ localize 'UNISYSTEMCINEMATIC.Civilian' }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member4.arm" {{checked actor.system.member4.arm}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member4.int" {{checked actor.system.member4.int}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                   <input type="checkbox" name="system.member4.sci" {{checked actor.system.member4.sci}}>
+                               </div>
+                           </td>
+                           <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member4.crm" {{checked actor.system.member4.crm}}>
+                                </div>
+                        
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member4.law" {{checked actor.system.member4.law}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member4.med" {{checked actor.system.member4.med}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member4.par" {{checked actor.system.member4.par}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member4.civ" {{checked actor.system.member4.civ}}>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    {{/if}}
+                </div>
+                <div class="member5">
+                    <table>
+                        <tr>
+                            <th class="small-input">
+                            </th >
+                            <th>
+                                {{ localize 'UNISYSTEMCINEMATIC.Member'}}&nbsp;5
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.Lvl" }}
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.RP" }}
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member5.show" {{checked actor.system.member5.show}}>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="charname" type="text" name="system.member5.name" value="{{actor.member5.name}}" placeholder="{{ localize 'Name' }}">
+                            </td>
+                            <td>
+                                <input type="number" name="system.member5.lvl" value="{{actor.member5.lvl}}">
+                            </td>
+                            <td>
+                                <input type="text" name="system.member5.RP" value="{{actor.member5.RP}}">
+                            </td>
+                        </tr>
+                    </table>
+                    {{#if actor.system.member5.show}}
+                    <table>
+                        <tr>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/military.png" title="{{ localize 'UNISYSTEMCINEMATIC.Military' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/intelligence.png" title="{{ localize 'UNISYSTEMCINEMATIC.Intelligence2' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/science_and_research.png" title="{{ localize 'UNISYSTEMCINEMATIC.Science & Research' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/criminal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Criminal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/law_enforcement.png" title="{{ localize 'UNISYSTEMCINEMATIC.Law Enforcement' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/media.png" title="{{ localize 'UNISYSTEMCINEMATIC.Media' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/paranormal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Paranormal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/civilian.png" title="{{ localize 'UNISYSTEMCINEMATIC.Civilian' }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member5.arm" {{checked actor.system.member5.arm}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member5.int" {{checked actor.system.member5.int}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                   <input type="checkbox" name="system.member5.sci" {{checked actor.system.member5.sci}}>
+                               </div>
+                           </td>
+                           <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member5.crm" {{checked actor.system.member5.crm}}>
+                                </div>
+                        
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member5.law" {{checked actor.system.member5.law}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member5.med" {{checked actor.system.member5.med}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member5.par" {{checked actor.system.member5.par}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member5.civ" {{checked actor.system.member5.civ}}>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    {{/if}}
+                </div>
+                <div class="member6">
+                    <table>
+                        <tr>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.Name" }}
+                            </th>
+                            <th>
+                                {{ localize 'UNISYSTEMCINEMATIC.Member'}}&nbsp;6
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.Lvl" }}
+                            </th>
+                            <th class="small-input">
+                                {{ localize "UNISYSTEMCINEMATIC.RP" }}
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member6.show" {{checked actor.system.member6.show}}>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="charname" type="text" name="system.member6.name" value="{{actor.member6.name}}" placeholder="{{ localize 'Name' }}">
+                            </td>
+                            <td>
+                                <input type="number" name="system.member6.lvl" value="{{actor.member6.lvl}}">
+                            </td>
+                            <td>
+                                <input type="text" name="system.member6.RP" value="{{actor.member6.RP}}">
+                            </td>
+                        </tr>
+                    </table>
+                    {{#if actor.system.member6.show}}
+                    <table>
+                        <tr>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/military.png" title="{{ localize 'UNISYSTEMCINEMATIC.Military' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/intelligence.png" title="{{ localize 'UNISYSTEMCINEMATIC.Intelligence2' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/science_and_research.png" title="{{ localize 'UNISYSTEMCINEMATIC.Science & Research' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/criminal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Criminal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/law_enforcement.png" title="{{ localize 'UNISYSTEMCINEMATIC.Law Enforcement' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/media.png" title="{{ localize 'UNISYSTEMCINEMATIC.Media' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/paranormal.png" title="{{ localize 'UNISYSTEMCINEMATIC.Paranormal' }}">
+                            </td>
+                            <td class="influence-logo">
+                                <img src="systems/unisystemcinematicbymmfo/images/conx_influence_icons/civilian.png" title="{{ localize 'UNISYSTEMCINEMATIC.Civilian' }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member6.arm" {{checked actor.system.member6.arm}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member6.int" {{checked actor.system.member6.int}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                   <input type="checkbox" name="system.member6.sci" {{checked actor.system.member6.sci}}>
+                               </div>
+                           </td>
+                           <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member6.crm" {{checked actor.system.member6.crm}}>
+                                </div>
+                        
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member6.law" {{checked actor.system.member6.law}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member6.med" {{checked actor.system.member6.med}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member6.par" {{checked actor.system.member6.par}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item-attribute-flex-container">
+                                    <input type="checkbox" name="system.member6.civ" {{checked actor.system.member6.civ}}>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+
+
+        <section class="sheet-body">
+
+
+            {{!-- Core Tab --}}
+            <div class="tab core" data-group="primary" data-tab="core">
+
+
+                <div class="bio-container">
+                    <h2>{{ localize "UNISYSTEMCINEMATIC.Description" }}</h2>
+                    {{editor descriptionHTML target="system.biography" button=true editable=editable engine="prosemirror"}}
+
+                </div>
+
+
+                <div class="locations-table">
+                    <h2 class="header-with-button">
+                        <button type="button" class="create-item" data-create="locations">+</button> 
+                        <span>{{ localize "UNISYSTEMCINEMATIC.Locations" }}</span>
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="table-left-align">{{ localize "UNISYSTEMCINEMATIC.Name" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Qty" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Location" }}</th>
+                                <th class="trash"><span title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each actor.locations as |item id|}}
+                                <tr class="item" data-item-id="{{item._id}}">
+                                    <td>
+                                        <div class="item-name-flex-container">
+                                            <div class="item-name">{{item.name}}</div>
+                                        </div>
+                                    </td>
+                                    <td class="table-center-align">{{item.system.qty}}</td>
+                                    <td class="table-center-align">
+                                        {{#with item.system.location as |location|}}
+                                            {{#if (eq location '0')}}
+                                                <span>*</span>
+                                            {{/if}}
+                                            {{#if (eq location '1')}}
+                                                <span>A</span>
+                                            {{/if}}
+                                            {{#if (eq location '2')}}
+                                                <span>B</span>
+                                            {{/if}}
+                                            {{#if (eq location '3')}}
+                                                <span>C</span>
+                                            {{/if}}
+                                            {{#if (eq location '4')}}
+                                                <span>D</span>
+                                            {{/if}}
+                                        {{/with}}
+                                    </td>
+                                    <td class="trash table-center-align"><a class="item-control item-delete" title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></a></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="facilities-table">
+                    <h2 class="header-with-button">
+                        <button type="button" class="create-item" data-create="facilities">+</button> 
+                        <span>{{ localize "UNISYSTEMCINEMATIC.Facilities" }}</span>
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="table-left-align">{{ localize "UNISYSTEMCINEMATIC.Name" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Qty" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Location" }}</th>
+                                <th class="trash"><span title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each actor.facilities as |item id|}}
+                                <tr class="item" data-item-id="{{item._id}}">
+                                    <td>
+                                        <div class="item-name-flex-container">
+                                            <div class="item-name">{{item.name}}</div>
+                                        </div>
+                                    </td>
+                                    <td class="table-center-align">{{item.system.qty}}</td>
+                                    <td class="table-center-align">
+                                        {{#with item.system.location as |location|}}
+                                            {{#if (eq location '0')}}
+                                                <span>*</span>
+                                            {{/if}}
+                                            {{#if (eq location '1')}}
+                                                <span>A</span>
+                                            {{/if}}
+                                            {{#if (eq location '2')}}
+                                                <span>B</span>
+                                            {{/if}}
+                                            {{#if (eq location '3')}}
+                                                <span>C</span>
+                                            {{/if}}
+                                            {{#if (eq location '4')}}
+                                                <span>D</span>
+                                            {{/if}}
+                                        {{/with}}
+                                    </td>
+                                    <td class="table-center-align"><a class="item-control item-delete" title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></a></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="staff-table">
+                    <h2 class="header-with-button">
+                        <button type="button" class="create-item" data-create="staff">+</button> 
+                        <span>{{ localize "UNISYSTEMCINEMATIC.Staff" }}</span>
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="table-left-align">{{ localize "UNISYSTEMCINEMATIC.Name" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Qty" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Location" }}</th>
+                                <th class="trash"><span title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each actor.staff as |item id|}}
+                                <tr class="item" data-item-id="{{item._id}}">
+                                    <td>
+                                        <div class="item-name-flex-container">
+                                            <div class="item-name">{{item.name}}</div>
+                                        </div>
+                                    </td>
+                                    <td class="table-center-align">{{item.system.qty}}</td>
+                                    <td class="table-center-align">
+                                        {{#with item.system.location as |location|}}
+                                            {{#if (eq location '0')}}
+                                                <span>*</span>
+                                            {{/if}}
+                                            {{#if (eq location '1')}}
+                                                <span>A</span>
+                                            {{/if}}
+                                            {{#if (eq location '2')}}
+                                                <span>B</span>
+                                            {{/if}}
+                                            {{#if (eq location '3')}}
+                                                <span>C</span>
+                                            {{/if}}
+                                            {{#if (eq location '4')}}
+                                                <span>D</span>
+                                            {{/if}}
+                                        {{/with}}
+                                    </td>
+                                    <td class="table-center-align"><a class="item-control item-delete" title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></a></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            {{!-- Equipment Tab --}}
+            <div class="tab equipment" data-group="primary" data-tab="equipment">
+
+                <div class="weaponery-table">
+                    <h2 class="header-with-button">
+                        <button type="button" class="create-item" data-create="weaponery">+</button> 
+                        <span>{{ localize "UNISYSTEMCINEMATIC.Weaponery" }}</span>
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="table-left-align">{{ localize "UNISYSTEMCINEMATIC.Name" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Qty" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Location" }}</th>
+                                <th class="trash"><span title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each actor.weaponery as |item id|}}
+                                <tr class="item" data-item-id="{{item._id}}">
+                                    <td>
+                                        <div class="item-name-flex-container">
+                                            <div class="item-name">{{item.name}}</div>
+                                        </div>
+                                    </td>
+                                    <td class="table-center-align">{{item.system.qty}}</td>
+                                    <td class="table-center-align">
+                                        {{#with item.system.location as |location|}}
+                                            {{#if (eq location '0')}}
+                                                <span>*</span>
+                                            {{/if}}
+                                            {{#if (eq location '1')}}
+                                                <span>A</span>
+                                            {{/if}}
+                                            {{#if (eq location '2')}}
+                                                <span>B</span>
+                                            {{/if}}
+                                            {{#if (eq location '3')}}
+                                                <span>C</span>
+                                            {{/if}}
+                                            {{#if (eq location '4')}}
+                                                <span>D</span>
+                                            {{/if}}
+                                        {{/with}}
+                                    </td>
+                                    <td class="table-center-align"><a class="item-control item-delete" title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></a></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="gear-table">
+                    <h2 class="header-with-button">
+                        <button type="button" class="create-item" data-create="gear">+</button> 
+                        <span>{{ localize "UNISYSTEMCINEMATIC.Gear" }}</span>
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="table-left-align">{{ localize "UNISYSTEMCINEMATIC.Name" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Qty" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Location" }}</th>
+                                <th class="trash"><span title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each actor.gear as |item id|}}
+                                <tr class="item" data-item-id="{{item._id}}">
+                                    <td>
+                                        <div class="item-name-flex-container">
+                                            <div class="item-name">{{item.name}}</div>
+                                        </div>
+                                    </td>
+                                    <td class="table-center-align">{{item.system.qty}}</td>
+                                    <td class="table-center-align">
+                                        {{#with item.system.location as |location|}}
+                                            {{#if (eq location '0')}}
+                                                <span>*</span>
+                                            {{/if}}
+                                            {{#if (eq location '1')}}
+                                                <span>A</span>
+                                            {{/if}}
+                                            {{#if (eq location '2')}}
+                                                <span>B</span>
+                                            {{/if}}
+                                            {{#if (eq location '3')}}
+                                                <span>C</span>
+                                            {{/if}}
+                                            {{#if (eq location '4')}}
+                                                <span>D</span>
+                                            {{/if}}
+                                        {{/with}}
+                                    </td>
+                                    <td class="table-center-align"><a class="item-control item-delete" title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></a></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="vehicles-table">
+                    <h2 class="header-with-button">
+                        <button type="button" class="create-item" data-create="vehicles">+</button> 
+                        <span>{{ localize "UNISYSTEMCINEMATIC.Vehicles & Accessories" }}</span>
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="table-left-align">{{ localize "UNISYSTEMCINEMATIC.Name" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Qty" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Location" }}</th>
+                                <th class="trash"><span title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each actor.vehicles as |item id|}}
+                                <tr class="item" data-item-id="{{item._id}}">
+                                    <td>
+                                        <div class="item-name-flex-container">
+                                            <div class="item-name">{{item.name}}</div>
+                                        </div>
+                                    </td>
+                                    <td class="table-center-align">{{item.system.qty}}</td>
+                                    <td class="table-center-align">
+                                        {{#with item.system.location as |location|}}
+                                            {{#if (eq location '0')}}
+                                                <span>*</span>
+                                            {{/if}}
+                                            {{#if (eq location '1')}}
+                                                <span>A</span>
+                                            {{/if}}
+                                            {{#if (eq location '2')}}
+                                                <span>B</span>
+                                            {{/if}}
+                                            {{#if (eq location '3')}}
+                                                <span>C</span>
+                                            {{/if}}
+                                            {{#if (eq location '4')}}
+                                                <span>D</span>
+                                            {{/if}}
+                                        {{/with}}
+                                    </td>
+                                    <td class="table-center-align"><a class="item-control item-delete" title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></a></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            {{!-- Resources Tab --}}
+            <div class="tab resources" data-group="primary" data-tab="resources">
+
+                <div class="science-table">
+                    <h2 class="header-with-button">
+                        <button type="button" class="create-item" data-create="science">+</button> 
+                        <span>{{ localize "UNISYSTEMCINEMATIC.Science Resources" }}</span>
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="table-left-align">{{ localize "UNISYSTEMCINEMATIC.Name" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Qty" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Location" }}</th>
+                                <th class="trash"><span title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each actor.science as |item id|}}
+                                <tr class="item" data-item-id="{{item._id}}">
+                                    <td>
+                                        <div class="item-name-flex-container">
+                                            <div class="item-name">{{item.name}}</div>
+                                        </div>
+                                    </td>
+                                    <td class="table-center-align">{{item.system.qty}}</td>
+                                    <td class="table-center-align">
+                                        {{#with item.system.location as |location|}}
+                                            {{#if (eq location '0')}}
+                                                <span>*</span>
+                                            {{/if}}
+                                            {{#if (eq location '1')}}
+                                                <span>A</span>
+                                            {{/if}}
+                                            {{#if (eq location '2')}}
+                                                <span>B</span>
+                                            {{/if}}
+                                            {{#if (eq location '3')}}
+                                                <span>C</span>
+                                            {{/if}}
+                                            {{#if (eq location '4')}}
+                                                <span>D</span>
+                                            {{/if}}
+                                        {{/with}}
+                                    </td>
+                                    <td class="table-center-align"><a class="item-control item-delete" title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></a></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="medical-table">
+                    <h2 class="header-with-button">
+                        <button type="button" class="create-item" data-create="medical">+</button> 
+                        <span>{{ localize "UNISYSTEMCINEMATIC.Medical Resources" }}</span>
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="table-left-align">{{ localize "UNISYSTEMCINEMATIC.Name" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Qty" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Location" }}</th>
+                                <th class="trash"><span title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each actor.medical as |item id|}}
+                                <tr class="item" data-item-id="{{item._id}}">
+                                    <td>
+                                        <div class="item-name-flex-container">
+                                            <div class="item-name">{{item.name}}</div>
+                                        </div>
+                                    </td>
+                                    <td class="table-center-align">{{item.system.qty}}</td>
+                                    <td class="table-center-align">
+                                        {{#with item.system.location as |location|}}
+                                            {{#if (eq location '0')}}
+                                                <span>*</span>
+                                            {{/if}}
+                                            {{#if (eq location '1')}}
+                                                <span>A</span>
+                                            {{/if}}
+                                            {{#if (eq location '2')}}
+                                                <span>B</span>
+                                            {{/if}}
+                                            {{#if (eq location '3')}}
+                                                <span>C</span>
+                                            {{/if}}
+                                            {{#if (eq location '4')}}
+                                                <span>D</span>
+                                            {{/if}}
+                                        {{/with}}
+                                    </td>
+                                    <td class="table-center-align"><a class="item-control item-delete" title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></a></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="restricted-table">
+                    <h2 class="header-with-button">
+                        <button type="button" class="create-item" data-create="restricted">+</button> 
+                        <span>{{ localize "UNISYSTEMCINEMATIC.Restricted Resources" }}</span>
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="table-left-align">{{ localize "UNISYSTEMCINEMATIC.Name" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Qty" }}</th>
+                                <th>{{ localize "UNISYSTEMCINEMATIC.Location" }}</th>
+                                <th class="trash"><span title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each actor.restricted as |item id|}}
+                                <tr class="item" data-item-id="{{item._id}}">
+                                    <td>
+                                        <div class="item-name-flex-container">
+                                            <div class="item-name">{{item.name}}</div>
+                                        </div>
+                                    </td>
+                                    <td class="table-center-align">{{item.system.qty}}</td>
+                                    <td class="table-center-align">
+                                        {{#with item.system.location as |location|}}
+                                        {{#if (eq location '0')}}
+                                            <span>*</span>
+                                        {{/if}}
+                                        {{#if (eq location '1')}}
+                                                <span>A</span>
+                                            {{/if}}
+                                            {{#if (eq location '2')}}
+                                                <span>B</span>
+                                            {{/if}}
+                                            {{#if (eq location '3')}}
+                                                <span>C</span>
+                                            {{/if}}
+                                            {{#if (eq location '4')}}
+                                                <span>D</span>
+                                            {{/if}}
+                                        {{/with}}
+                                    </td>
+                                    <td class="trash table-center-align"><a class="item-control item-delete" title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></a></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+</form>

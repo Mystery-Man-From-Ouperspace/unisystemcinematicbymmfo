@@ -1,0 +1,59 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <div class="item-sheet-header">
+        <h1 class="item-header-container">
+            <img class="item-img" src="{{item.img}}" data-edit="img">
+            <input type="text" name="name" value="{{item.name}}" placeholder="{{ localize 'Name' }}">
+        </h1>
+    </div>
+
+    <section>
+        <div class="description-container">
+            <div class="item-attribute-sidebar">
+                <h2>{{ localize "UNISYSTEMCINEMATIC.Attributes" }}</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.RP" }}</th>
+                            <td><input type="text" name="system.rp" value="{{item.system.rp}}"></td>
+                        </tr>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.Space" }}</th>
+                            <td><input type="text" name="system.space" value="{{item.system.space}}"></td>
+                        </tr>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.Prerequisite" }}</th>
+                            <td><input type="text" name="system.prerequisite" value="{{item.system.prerequisite}}"></td>
+                        </tr>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.Quantity" }}</th>
+                            <td><input type="text" name="system.qty" value="{{item.system.qty}}"></td>
+                        </tr>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.Cost" }}</th>
+                            <td><input type="number" name="system.cost" value="{{item.system.cost}}"></td>
+                        </tr>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.Location" }}</th>
+                            <td>
+                            <select id="typeSelect" name="system.location" data-type="String">
+                                {{#select item.system.location}}
+                                    {{#each item.system.locationOptions as |options key|}}
+                                        <option value="{{key}}">{{ localize (concat 'UNISYSTEMCINEMATIC.' options) }}</option>
+                                    {{/each}}
+                                {{/select}}
+                            </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="item-description-sidebar">
+                <h2 class="item-desc">{{ localize "UNISYSTEMCINEMATIC.Description" }}</h2>
+                {{editor descriptionHTML target="system.description" button=true editable=editable engine="prosemirror"}}
+
+            </div>
+        </div>
+    </section>
+</form>
