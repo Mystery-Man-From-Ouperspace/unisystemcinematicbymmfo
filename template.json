@@ -435,12 +435,12 @@
                     }
                 },
                 "cityofheroescharacterTypes": [
-                    "Hero",
-                    "WhiteHat",
-                    "ExperiencedHero"
+                    "cohHero",
+                    "cohWhiteHat",
+                    "cohExperiencedHero"
                 ],
                 "cityofheroescharacterTypeValues": {
-                    "Hero": {
+                    "cohHero": {
                         "attributePoints": {
                             "value": 0,
                             "max": 20
@@ -466,7 +466,7 @@
                             "max": 10
                         }
                     },
-                    "WhiteHat": {
+                    "cohWhiteHat": {
                         "attributePoints": {
                             "value": 0,
                             "max": 15
@@ -492,7 +492,7 @@
                             "max": 20
                         }
                     },
-                    "ExperiencedHero": {
+                    "cohExperiencedHero": {
                         "attributePoints": {
                             "value": 0,
                             "max": 25
