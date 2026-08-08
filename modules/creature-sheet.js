@@ -44,6 +44,7 @@ export class unisystemCreatureSheet extends ActorSheet {
       const equippedItem = [];
       const weapon = [];
       const skill = [];
+      const maneuver = []
       const aspect = [];
 
       // Iterate through items and assign to containers
@@ -62,6 +63,10 @@ export class unisystemCreatureSheet extends ActorSheet {
                 skill.push(i)
                 break
 
+            case "maneuver":
+                maneuver.push(i)
+                break;
+
             case "aspect":
                 aspect.push(i)
                 break
@@ -69,7 +74,7 @@ export class unisystemCreatureSheet extends ActorSheet {
       }
 
       // Alphabetically sort all items
-      const itemCats = [item, equippedItem, weapon, skill, aspect]
+      const itemCats = [item, equippedItem, weapon, skill, maneuver, aspect]
       for (let category of itemCats) {
           if (category.length > 1) {
               category.sort((a,b) => {
@@ -86,6 +91,7 @@ export class unisystemCreatureSheet extends ActorSheet {
       actorData.equippedItem = equippedItem
       actorData.weapon = weapon
       actorData.skill = skill
+      actorData.maneuver = maneuver
       actorData.aspect = aspect
   }
 
