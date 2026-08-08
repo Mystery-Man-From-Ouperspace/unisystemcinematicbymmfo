@@ -137,7 +137,7 @@ export class unisystemActorSheet extends ActorSheet {
       }
 
       // Alphabetically sort all items
-      const itemCats = [item, equippedItem, weapon, power, quality, pullingStrings, skill, drawback]
+      const itemCats = [item, equippedItem, weapon, power, maneuver, quality, pullingStrings, skill, drawback]
       for (let category of itemCats) {
           if (category.length > 1) {
               category.sort((a,b) => {
@@ -253,7 +253,7 @@ export class unisystemActorSheet extends ActorSheet {
               mycharacterTypeValues = actorData.armyofdarknesscharacterTypeValues
                 break;
             case "cityofheroes":
-              characterTypePath = actorData.characterTypes[actorData.cityofheroescharacterType]
+              characterTypePath = actorData.cityofheroescharacterTypes[actorData.cityofheroescharacterType]
               mycharacterTypeValues = actorData.cityofheroescharacterTypeValues
                 break;
             case "ghostsofalbion":
