@@ -2,7 +2,7 @@
     "id": "unisystemcinematicbymmfo",
     "title": "Cinematic Unisystem (Unofficial) by MMFO",
     "description": "An unofficial digital system for playing any Cinematic Unisystem system (Buffy, Angel, Army of Darkness, City of Heroes, Ghosts of Albion or Eldritch Skies) by Eden Studios",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "authors": [
       {
         "name": "Mystery Man From Outerspace (aka David Duke OVNI)",
@@ -41,6 +41,6 @@
     "url": "https://github.com/Mystery-Man-From-Ouperspace/unisystemcinematicbymmfo/",
     "background": "",
     "manifest": "https://github.com/Mystery-Man-From-Ouperspace/unisystemcinematicbymmfo/releases/download/unisystemcinematicbymmfo/system.json",
-    "download": "https://github.com/Mystery-Man-From-Ouperspace/unisystemcinematicbymmfo/releases/download/0.0.5/release-005.zip",
+    "download": "https://github.com/Mystery-Man-From-Ouperspace/unisystemcinematicbymmfo/releases/download/0.0.6/release-006.zip",
     "license": "LICENSE.txt"
 }
