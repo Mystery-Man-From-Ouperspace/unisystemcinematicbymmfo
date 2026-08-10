@@ -3,3 +3,4 @@
 
 ---
 Bugs connus et non encore traités
+Not already corrected known bugs
