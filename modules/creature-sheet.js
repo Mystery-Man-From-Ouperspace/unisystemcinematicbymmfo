@@ -331,7 +331,11 @@ export class unisystemCreatureSheet extends ActorSheet {
         // Create Classes for Dialog Box
         // let mode = game.settings.get("unisystemcinematicbymmfo", "light-mode") ? "light-mode" : ""
         // let dialogOptions = {classes: ["dialog", "unisystemcinematicbymmfo", mode]}
-        let dialogOptions = {classes: ["dialog", "unisystemcinematicbymmfo", `${game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "afmbe" ? "afmbe" : (game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "witchcraft" ? "witchcraft" : (game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "terraprimate" ? "terraprimate" : ""))}`]}
+        // let dialogOptions = {classes: ["dialog", "unisystemcinematicbymmfo", `${game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "afmbe" ? "afmbe" : (game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "witchcraft" ? "witchcraft" : (game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "terraprimate" ? "terraprimate" : ""))}`]}
+        let gamesettings = game.settings.get("unisystemcinematicbymmfo", "gamesystem");
+        let gamesystemclass = gamesettings === "buffy" ? "buffy" : (gamesettings === "angel" ? "angel" : (gamesettings === "armyofdarkness" ? "armyofdarkness" : (gamesettings === "cityofheroes" ? "cityofheroes" : (gamesettings === "ghostsofalbion" ? "ghostsofalbion" : (gamesettings === "eldritchskies" ? "eldritchskies" : "")))));
+        let dialogOptions = {classes: ["dialog", "unisystemcinematicbymmfo", gamesystemclass]}
+
 
         // Create Dialog Prompt
         let d = new Dialog({
@@ -394,7 +398,8 @@ export class unisystemCreatureSheet extends ActorSheet {
                         if (shotNumber > 0) {
                             switch (weapon.system.capacity.value - shotNumber >= 0) {
                                 case true:
-                                    weapon.update({'data.capacity.value': weapon.system.capacity.value - shotNumber})
+                                    // weapon.update({'data.capacity.value': weapon.system.capacity.value - shotNumber})
+                                    weapon.update({'system.capacity.value': weapon.system.capacity.value - shotNumber})
                                     break
 
                                 case false: 

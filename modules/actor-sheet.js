@@ -549,7 +549,8 @@ export class unisystemActorSheet extends ActorSheet {
                         if (shotNumber > 0) {
                             switch (weapon.system.capacity.value - shotNumber >= 0) {
                                 case true:
-                                    weapon.update({'data.capacity.value': weapon.system.capacity.value - shotNumber})
+                                    // weapon.update({'data.capacity.value': weapon.system.capacity.value - shotNumber})
+                                    weapon.update({'system.capacity.value': weapon.system.capacity.value - shotNumber})
                                     break
 
                                 case false: 
