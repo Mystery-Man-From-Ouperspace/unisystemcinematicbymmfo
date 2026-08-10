@@ -3,9 +3,11 @@ export class unisystemVehicleSheet extends ActorSheet {
     /** @override */
       static get defaultOptions() {
         // return mergeObject(super.defaultOptions, {
+        let gamesettings = game.settings.get("unisystemcinematicbymmfo", "gamesystem");
+        let gamesystemclass = gamesettings === "buffy" ? "buffy" : (gamesettings === "angel" ? "angel" : (gamesettings === "armyofdarkness" ? "armyofdarkness" : (gamesettings === "cityofheroes" ? "cityofheroes" : (gamesettings === "ghostsofalbion" ? "ghostsofalbion" : (gamesettings === "eldritchskies" ? "eldritchskies" : "")))));
         return foundry.utils.mergeObject(super.defaultOptions, {
           // classes: ["unisystemcinematicbymmfo", "sheet", "actor", `${game.settings.get("unisystemcinematicbymmfo", "light-mode") ? "light-mode" : ""}`],
-          classes: ["unisystemcinematicbymmfo", "sheet", "actor", `${game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "afmbe" ? "afmbe" : (game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "witchcraft" ? "witchcraft" : (game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "terraprimate" ? "terraprimate" : ""))}`],
+          classes: ["unisystemcinematicbymmfo", "sheet", "actor", gamesystemclass],
           template: "systems/unisystemcinematicbymmfo/templates/vehicle-sheet.html",
             width: 700,
             height: 780,
