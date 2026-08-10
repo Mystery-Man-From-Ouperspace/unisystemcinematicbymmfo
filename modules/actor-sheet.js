@@ -27,6 +27,8 @@ export class unisystemActorSheet extends ActorSheet {
     data.isGM = game.user.isGM;
     data.editable = data.options.editable;
 
+    data.polaroidold = game.settings.get("unisystemcinematicbymmfo", "polaroidold");
+
     data.gamesystem = game.settings.get("unisystemcinematicbymmfo", "gamesystem");
 
     const actorData = data.system;

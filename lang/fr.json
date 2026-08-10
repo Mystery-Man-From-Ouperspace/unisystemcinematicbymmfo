@@ -177,7 +177,9 @@
   "UNISYSTEMCINEMATIC.Aegis-NDD": "Jouer des agents du NDD",
   "UNISYSTEMCINEMATIC.Checking this option enables NDD wheel instead of Aegis wheel": "Ne fonctionne que si le module Eden Studios pour Conspiracy X est installé. Cocher cette option active la roue du NDD au lieu de celle d′Aegis quand le jeu est en pause.",
           
-  
+  "UNISYSTEMCINEMATIC.Polaroid Old": "Vieux Polaroid",
+  "UNISYSTEMCINEMATIC.Checking this option enables Old Polaroid": "Cocher cette option active le vieux Polaroid dans les fiches d'acteurs.",
+
   "UNISYSTEMCINEMATIC.Locations": "Locaux",
   "UNISYSTEMCINEMATIC.Facilities": "Installations",
   "UNISYSTEMCINEMATIC.Staff": "Personnel",

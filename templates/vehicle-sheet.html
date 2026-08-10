@@ -5,7 +5,11 @@
         <div class="sheet-sidebar">
             <div class="header-container">
                 <div class="polaroid-container">
+                    {{#if polaroidold}}
+                    <img class="polaroid" src="systems/unisystemcinematicbymmfo/images/polaroid_old.png">
+                    {{else}}
                     <img class="polaroid" src="systems/unisystemcinematicbymmfo/images/polaroid.png">
+                    {{/if}}
                     <img class="profile-img" data-edit="img" src="{{actor.img}}">
                     <div class="sheet-nav-container" hidden>
                         <nav class="sheet-nav sheet-tabs tabs" data-group="primary" >
