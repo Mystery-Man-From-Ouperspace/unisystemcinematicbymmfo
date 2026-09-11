@@ -144,6 +144,8 @@
 
   "UNISYSTEMCINEMATIC.Attribute Roll": "Attribute Roll",
   "UNISYSTEMCINEMATIC.Weapon Roll": "Weapon Roll",
+  "UNISYSTEMCINEMATIC.Armor Roll": "Armor Roll",
+
 
   "UNISYSTEMCINEMATIC.If a ranged weapon": "If a ranged weapon",
   "UNISYSTEMCINEMATIC.select how many shots": ", select how many shots to take and select weapon firing mode. The number of shots fired will be reduced from the weapon's current load capacity. Make sure you have enough ammo in the chamber!",
@@ -200,7 +202,7 @@
   "UNISYSTEMCINEMATIC.Surveillance": "Surveillance",
   "UNISYSTEMCINEMATIC.IntrusionEquipment": "Intrusion Equip.",
   "UNISYSTEMCINEMATIC.Electronics": "Electronics",
-  "UNISYSTEMCINEMATIC.software": "Software",
+  "UNISYSTEMCINEMATIC.Software": "Software",
   "UNISYSTEMCINEMATIC.PersonnelEquipment": "Personnel Equip.",
 
   "UNISYSTEMCINEMATIC.Vehicles & Accessories": "Vehicles & Accessories",
@@ -294,6 +296,39 @@
   "UNISYSTEMCINEMATIC.cohHero": "Hero",
   "UNISYSTEMCINEMATIC.cohWhiteHat": "White Hat",
   "UNISYSTEMCINEMATIC.cohExperiencedHero": "Experienced Hero",
+
+
+
+  "CHAT": {
+    "MODES": {
+      "blind": "Blind to Directors",
+      "gm": "Private to Directors"
+    }
+  },
+  "KEYBINDINGS": {
+    "Restricted": "Director Only"
+  },
+  "VISIBILITY": {
+    "GAMEMASTER": {
+      "label": "Always for Director"
+    }
+  },
+  "BEHAVIOR": {
+    "TYPES": {
+      "displayScrollingText": {
+        "VISIBILITY_MODES": {
+          "GAMEMASTER": {
+            "label": "Director"
+          }
+        }
+      }
+    }
+  },
+  "USER": {
+    "RoleAssistant": "Assistant Director",
+    "RoleGamemaster": "Director",
+    "GM": "GM"
+  },
 
 
 

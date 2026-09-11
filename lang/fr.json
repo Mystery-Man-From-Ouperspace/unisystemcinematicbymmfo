@@ -144,6 +144,7 @@
   
   "UNISYSTEMCINEMATIC.Attribute Roll": "Jet d′Attribut",
   "UNISYSTEMCINEMATIC.Weapon Roll": "Jet d′Arme",
+  "UNISYSTEMCINEMATIC.Armor Roll": "Jet d′Armure",
 
   "UNISYSTEMCINEMATIC.If a ranged weapon": "S'il s'agit d'une arme à distance",
   "UNISYSTEMCINEMATIC.select how many shots": ", saisissez le nombre de tirs à effectuer puis sélectionnez le mode de tir de l'arme. Le nombre de tirs effectués sera déduit du contenu courant du chargeur de l'arme. Assurez-vous de disposer d'assez de munitions dans la chambre !",
@@ -282,30 +283,64 @@
 
 
 
-"TYPES": {
-  "Actor": {
-    "character": "Personnage",
-    "creature": "Créature",
-    "cell": "Cellule",
-    "vehicle": "Véhicule"
+  "CHAT": {
+    "MODES": {
+      "blind": "Aveugle pour les Réalisateurs",
+      "gm": "Privé pour les Réalisateurs"
+    }
   },
-  "Item": {
-    "quality": "Qualité",
-    "drawback": "Désavantage",
-    "skill": "Compétence",
-    "power": "Capacité spéciale",
-    "maneuver": "Manœuvre",
-    "aspect": "Aspect",
-    "weapon": "Arme",
-    "item": "Objet",
-    "locations": "Local",
-    "facilities": "Installation",
-    "staff": "Personnel",
-    "weaponery": "Armement",
-    "gear": "Matériel",
-    "vehicles": "Véhicule",
-    "science": "Ressource scientifique",
-    "medical": "Ressource médicale",
-    "restricted": "Ressource à accès restreint"  }
-}
+  "KEYBINDINGS": {
+    "Restricted": "Réalisateur seulement"
+  },
+  "VISIBILITY": {
+    "GAMEMASTER": {
+      "label": "Toujours pour le Réalisateur"
+    }
+  },
+  "BEHAVIOR": {
+    "TYPES": {
+      "displayScrollingText": {
+        "VISIBILITY_MODES": {
+          "GAMEMASTER": {
+            "label": "Réalisateur"
+          }
+        }
+      }
+    }
+  },
+  "USER": {
+    "RoleAssistant": "Assistant Réalisateur",
+    "RoleGamemaster": "Réalisateur",
+    "GM": "GM"
+  },
+
+
+
+  "TYPES": {
+    "Actor": {
+      "character": "Personnage",
+      "creature": "Créature",
+      "cell": "Cellule",
+      "vehicle": "Véhicule"
+    },
+    "Item": {
+      "quality": "Qualité",
+      "drawback": "Désavantage",
+      "skill": "Compétence",
+      "power": "Capacité spéciale",
+      "maneuver": "Manœuvre",
+      "aspect": "Aspect",
+      "weapon": "Arme",
+      "item": "Objet",
+      "locations": "Local",
+      "facilities": "Installation",
+      "staff": "Personnel",
+      "weaponery": "Armement",
+      "gear": "Matériel",
+      "vehicles": "Véhicule",
+      "science": "Ressource scientifique",
+      "medical": "Ressource médicale",
+      "restricted": "Ressource à accès restreint"
+    }
+  }
 }
