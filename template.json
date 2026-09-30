@@ -678,6 +678,7 @@
                 "range": "",
                 "damage": 0,
                 "damage_cha_multiplier": "none",
+                "damage_cha_multiplier_bonus": 0,
                 "damage_string": "",
                 "ammo_type": "",
                 "damage_type": "",

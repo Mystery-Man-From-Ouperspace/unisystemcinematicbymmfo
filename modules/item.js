@@ -217,7 +217,7 @@ export class unisystemItem extends Item {
         // This does not apply to weapons on vehicles
         if (itemData.damage_cha_multiplier != "none" && this.isEmbedded && this.actor.type != 'vehicle') {
             console.log(this.actor.type)
-            itemData.damage_string = `${itemData.damage}*${actorData[itemData.damage_cha_multiplier].value + (itemData.damage_type == 1 ? 1 : 0)}`
+            itemData.damage_string = `${itemData.damage}*${actorData[itemData.damage_cha_multiplier].value + (itemData.damage_cha_multiplier_bonus) + (itemData.damage_type == 1 ? 1 : 0)}`
         }
         else  {
             itemData.damage_string = itemData.damage
