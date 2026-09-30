@@ -82,7 +82,7 @@
   "UNISYSTEMCINEMATIC.locations": "local",
   "UNISYSTEMCINEMATIC.facilities": "installation",
   "UNISYSTEMCINEMATIC.staff": "personnel",
-  "UNISYSTEMCINEMATIC.weaponery": "armement",
+  "UNISYSTEMCINEMATIC.weaponery": "armurerie",
   "UNISYSTEMCINEMATIC.gear": "matériel",
   "UNISYSTEMCINEMATIC.vehicles": "véhicule",
   "UNISYSTEMCINEMATIC.science": "ressource scientifique",
@@ -185,7 +185,7 @@
   "UNISYSTEMCINEMATIC.Facilities": "Installations",
   "UNISYSTEMCINEMATIC.Staff": "Personnel",
 
-  "UNISYSTEMCINEMATIC.Weaponery": "Armement",
+  "UNISYSTEMCINEMATIC.Weaponery": "Armurerie",
   "UNISYSTEMCINEMATIC.Gear": "Matériel",
   "UNISYSTEMCINEMATIC.Vehicles": "Véhicule",
 
@@ -335,7 +335,7 @@
       "locations": "Local",
       "facilities": "Installation",
       "staff": "Personnel",
-      "weaponery": "Armement",
+      "weaponery": "Armurerie",
       "gear": "Matériel",
       "vehicles": "Véhicule",
       "science": "Ressource scientifique",
