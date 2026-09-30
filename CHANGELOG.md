@@ -1,6 +1,7 @@
 0.0.8
 - Added icons to actors' item sections
 - Added damage multiplier bonus to weapon items
+- Corrected display right localization of damage type tag in chat for creatures's weapon items
 
 0.0.7
 - Added Old Polaroid option
