@@ -77,7 +77,24 @@ export class unisystemItem extends Item {
 
         // Get the Item's data & Actor's data
         const itemData = this.system
-        const actorData = this.actor ? this.actor.system : {}
+        const myItem = this
+
+        const actorId = this.parent.id
+
+        console.log("actorId", actorId)
+       
+        //const actorData = this.actor ? this.actor.system : {}
+        // const myActor = this.actor
+
+        console.log("myItem", myItem)
+
+        const myActor = game.actors.get(actorId);
+
+        console.log("myActor", myActor)
+
+        const actorData = myActor ? myActor.system : {}
+
+        console.log("actorData", actorData)
 
         // Prepare Data based on item type
         if (itemData && actorData) {
@@ -97,13 +114,17 @@ export class unisystemItem extends Item {
 
                 case 'skill':
                 case 'power':
-                case "maneuver":
-                    this._prepareSkillPowerManeuver(actorData, itemData)
+                    this._prepareSkillPower(actorData, itemData)
+                    break
+
+                    case 'maneuver':
+                    this._prepareManeuver(actorData, itemData, myActor, myItem)
                     break
 
                 case 'weapon':
                     this._prepareWeaponItem(actorData, itemData)
                     break
+
                 case 'locations':
                 case 'facilities':
                 case 'staff':
@@ -117,6 +138,7 @@ export class unisystemItem extends Item {
                     break
             }
         }
+
     }
 
     _prepareItem(actorData, itemData) {
@@ -167,7 +189,7 @@ export class unisystemItem extends Item {
   
     }
 
-    _prepareSkillPowerManeuver(actorData, itemData) {
+    _prepareSkillPower(actorData, itemData) {
 
 
 
@@ -224,4 +246,69 @@ export class unisystemItem extends Item {
         }
     
     }
+    
+    _prepareManeuver(actorData, itemData, myActor, myItem) {
+
+
+
+
+        actorData.descriptionHTML = TextEditor.enrichHTML(itemData.description, {
+          secrets: false,
+          async: true
+        });
+  
+        let myParent = undefined
+
+        try {
+            myParent = myActor
+        } catch (error) {
+            console.error(error);
+        }
+
+        console.log("myParent 266", myParent)
+
+        let myWeapon
+        let baseDamages
+        let key = itemData.weapon
+  
+
+        if (myParent != undefined) {
+            if (myParent.weapon != null) {
+                for (const item of myParent.weapon) {
+                    console.log("J'étudie les weapons")
+                    if (item._id == key) {
+                        myWeapon = item
+                    }
+                }
+
+                if (myWeapon != undefined) {
+                    baseDamages = `${myWeapon.system.damage}*${actorData[myWeapon.system.damage_cha_multiplier].value + (myWeapon.system.damage_cha_multiplier_bonus) + (myWeapon.system.damage_type == 1 ? 1 : 0)}`
+                }
+            }
+        }
+
+        /* A essayer et débugguer plus tard
+        for (let weapon of myParent.items.filter(item => item.type === 'weapon')) {
+            if (weapon.id == key) {
+                myWeapon = weapon
+            }
+
+            if (myWeapon != undefined) {
+                    baseDamages = `${myWeapon.system.damage}*${actorData[myWeapon.system.damage_cha_multiplier].value + (myWeapon.system.damage_cha_multiplier_bonus) + (myWeapon.system.damage_type == 1 ? 1 : 0)}`
+                }
+            }
+
+        }
+        */
+
+        // Build Damage String by combining Damage Entry with Damage Multiplier Entry (Looks at Actor to grab Multiplier Value)
+        // This does not apply to weapons on vehicles
+        // if (itemData.weapon != "none" && this.isEmbedded && this.actor.type != 'vehicle') {
+        if (myWeapon != undefined) {
+            console.log(this.actor.type)
+           //  myItem.update({ "system.baseDamages": baseDamages })
+           itemData.baseDamages = baseDamages
+        }
+    }
+
 }

@@ -145,18 +145,20 @@
                         <table class="item-table">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th class="table-left-align">{{ localize "UNISYSTEMCINEMATIC.Name" }}</th>
                                     <th>{{ localize "UNISYSTEMCINEMATIC.Bonus" }}</th>
-                                    <th>{{ localize "UNISYSTEMCINEMATIC.BaseDamage" }}</th>
+                                    <th></th>
                                     <th class="trash"><span title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></span></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {{#each actor.maneuver as |item id|}}
                                     <tr class="item" data-item-id="{{item._id}}">
+                                        <td><i class="fas fa-dice-d20 maneuver-roll"></i></td>
                                         <td class="item-name">{{item.name}}</td>
                                         <td class="table-center-align">{{item.system.bonus}}</td>
-                                        <td class="table-center-align">{{item.system.baseDamages}}</td>
+                                        <td><i class="fas fa-dice-d20 maneuver-damage"></i></td>
                                         <td class="trash table-center-align"><a class="item-control item-delete" title="{{ localize 'UNISYSTEMCINEMATIC.Delete Item' }}"><i class="fas fa-trash"></i></a></td>
                                     </tr>
                                 {{/each}}

@@ -752,6 +752,12 @@
         },
         "maneuver": {
             "templates": ["common"],
+            "attribute": "none",
+            "skill": "",
+            "aspect": "",
+            "quality": "",
+            "drawback": "",
+            "weapon": "",
             "bonus": 0,
             "baseDamages": ""
         },

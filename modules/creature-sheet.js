@@ -29,6 +29,8 @@ export class unisystemCreatureSheet extends ActorSheet {
 
     data.polaroidold = game.settings.get("unisystemcinematicbymmfo", "polaroidold");
 
+    data.isCreature = true
+
     const actorData = data.system;
     let options = 0;
     let user = this.user;
@@ -121,7 +123,9 @@ export class unisystemCreatureSheet extends ActorSheet {
         html.find('.toggleEquipped').click(this._onToggleEquipped.bind(this))
         html.find('.armor-button-cell button').click(this._onArmorRoll.bind(this))
         html.find('.reset-resource').click(this._onResetResource.bind(this))
-        
+        html.find('.maneuver-roll').click(this._onManeuverRoll.bind(this))
+        html.find('.maneuver-damage').click(this._onManeuverDamageRoll.bind(this))
+
         // Update/Open Inventory Item
         html.find('.create-item').click(this._createItem.bind(this))
 
@@ -329,6 +333,231 @@ export class unisystemCreatureSheet extends ActorSheet {
         d.render(true)
     }
 
+    _onManeuverRoll(event) {
+        event.preventDefault()
+        let element = event.currentTarget
+        // let itemId = element.dataset.itemId
+        let itemId = element.closest('.item').dataset.itemId
+        let actorData = this.actor.system
+        let actor = this.actor
+        let myPreSelectedAttribute = "none"
+        let myPreSelectedSkill = "none"
+        let myPreSelectedAspect = "none"
+        let myModifiers = 0
+        let myManeuver
+
+        console.log("actor.maneuver", actor.maneuver)
+
+        if (actor.maneuver != null) {
+            for (const item of actor.maneuver) {
+                console.log("J'étudie les maneuvers")
+                if (item._id == itemId) {
+                    myManeuver = item
+                }
+            }
+            myPreSelectedAttribute = myManeuver.system.attribute
+            myPreSelectedSkill = myManeuver.system.skill
+            myPreSelectedAspect = myManeuver.system.aspect
+            myModifiers = myManeuver.system.bonus
+        }
+
+        let primaryAttributeMenuObj = Object.freeze({
+            none: {
+                id: "none",
+                label: "UNISYSTEMCINEMATIC.None",
+            },
+            strength: {
+                id: "strength",
+                label: "UNISYSTEMCINEMATIC.strength",
+            },
+            dexterity: {
+                id: "dexterity",
+                label: "UNISYSTEMCINEMATIC.dexterity",
+            },
+            constitution: {
+                id: "constitution",
+                label: "UNISYSTEMCINEMATIC.constitution",
+            },
+            intelligence: {
+                id: "intelligence",
+                label: "UNISYSTEMCINEMATIC.intelligence",
+            },
+            perception: {
+                id: "perception",
+                label: "UNISYSTEMCINEMATIC.perception",
+            },
+            willpower: {
+                id: "willpower",
+                label: "UNISYSTEMCINEMATIC.willpower",
+            }
+        })
+
+        let attributeLabel = game.i18n.localize(primaryAttributeMenuObj[myPreSelectedAttribute].label)
+
+        // Create options for Qualities/Drawbacks/Skills
+        let skillOptions = []
+        for (let skill of this.actor.items.filter(item => item.type === 'skill')) {
+            var option
+            if (skill.id == myPreSelectedSkill) {
+                option = `<option value="${skill.id}" selected>${skill.name} ${skill.system.level}</option>`
+            } else {
+                option = `<option value="${skill.id}">${skill.name} ${skill.system.level}</option>`
+            }
+            skillOptions.push(option)
+        }
+
+        let aspectOptions = []
+        for (let aspect of this.actor.items.filter(item => item.type === 'aspect')) {
+            var option
+            if (aspect.id == myPreSelectedAspect) {
+                option = `<option value="${aspect.id}" selected>${aspect.name} ${aspect.system.power}</option>`
+            } else {
+                option = `<option value="${aspect.id}">${aspect.name} ${aspect.system.power}</option>`
+            }
+            aspectOptions.push(option)
+        }
+
+        // Create Classes for Dialog Box
+        // let mode = game.settings.get("unisystemcinematicbymmfo", "light-mode") ? "light-mode" : ""
+        // let dialogOptions = {classes: ["dialog", "unisystemcinematicbymmfo", mode]}
+        let dialogOptions = {classes: ["dialog", "unisystemcinematicbymmfo", `${game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "afmbe" ? "afmbe" : (game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "witchcraft" ? "witchcraft" : (game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "terraprimate" ? "terraprimate" : ""))}`]}
+
+        // Create Dialog Prompt
+        let d = new Dialog({
+            title: attributeLabel,
+            content: `<div class="unisystemcinematicbymmfo-dialog-menu">
+                        <h2>${attributeLabel}`+` `+game.i18n.localize("UNISYSTEMCINEMATIC.Roll")+`</h2>
+
+                            <div class="unisystemcinematicbymmfo-dialog-menu-text-box">
+                                <div>
+                                    <p>`+game.i18n.localize("UNISYSTEMCINEMATIC.Apply modifiers creature")+`</p>
+                                    
+                                </div>
+                            </div>
+
+
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Roll Modifier")+`</td>
+                                        <td class="table-center-align"><input class="attribute-input" type="number" value="${myModifiers}" name="inputModifier" id="inputModifier"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Skills")+`</td>
+                                        <td class="table-center-align">
+                                            <select id="skillSelect" name="skills">
+                                                <option value="None">`+game.i18n.localize("UNISYSTEMCINEMATIC.None")+`</option>
+                                                ${skillOptions.join('')}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Aspects")+`</td>
+                                        <td class="table-center-align">
+                                            <select id="aspectSelect" name="aspects">
+                                                <option value="None">`+game.i18n.localize("UNISYSTEMCINEMATIC.None")+`</option>
+                                                ${aspectOptions.join('')}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>`,
+            buttons: {
+                one: {
+                    label: game.i18n.localize("UNISYSTEMCINEMATIC.Cancel"),
+                    callback: html => console.log('Cancelled')
+                },
+                two: {
+                    label: game.i18n.localize("UNISYSTEMCINEMATIC.Roll"),
+                    callback: async html => {
+                        // Grab the selected options
+                        // let attributeTestSelect = html[0].querySelector('#attributeTestSelect').value
+                        let userInputModifier = Number(html[0].querySelector('#inputModifier').value)
+                        let selectedSkill = this.actor.items.get(html[0].querySelector('#skillSelect').value)
+                        let selectedAspect = this.actor.items.get(html[0].querySelector('#aspectSelect').value)
+
+                        // Set values for options
+                        // let attributeValue = attributeTestSelect === game.i18n.localize("UNISYSTEMCINEMATIC.Simple") ? this.actor.system[attributeLabel.toLowerCase()].value * 2 : this.actor.system[attributeLabel.toLowerCase()].value
+                        let attributeValue = this.actor.system[myPreSelectedAttribute.toLowerCase()].value
+                        let skillValue = selectedSkill != undefined ? selectedSkill.system.level : 0
+                        let aspectValue = selectedAspect != undefined ? selectedAspect.system.power : 0
+
+                        // Calculate total modifier to roll
+                        let rollMod = (attributeValue + skillValue + aspectValue + userInputModifier)
+
+                        // Roll Dice
+                        let roll = new Roll('1d10')
+                        await roll.roll()
+                        await game?.dice3d?.showForRoll(roll)
+
+                        // Calculate total result after modifiers
+                        let totalResult = Number(roll.result) + rollMod
+
+                        // Create Chat Message Content
+                        // let tags = [`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.${attributeTestSelect}`)+` `+game.i18n.localize("UNISYSTEMCINEMATIC.Test")+`</div>`]
+                        let tags = [``]
+                        let ruleOfDiv = ``
+                        if (userInputModifier != 0) {tags.push(`<div>`+game.i18n.localize("UNISYSTEMCINEMATIC.User Modifier")+` ${userInputModifier >= 0 ? '+' : ''}${userInputModifier}</div>`)}
+                        if (selectedSkill != undefined) {tags.push(`<div>${selectedSkill.name} ${selectedSkill.system.level >= 0 ? '+' : ''}${selectedSkill.system.level}</div>`)}
+                        if (selectedAspect != undefined) {tags.push(`<div>${selectedAspect.name} ${selectedAspect.system.power >= 0 ? '+' : ''}${selectedAspect.system.power}</div>`)}
+
+                        if (roll.result == 10) {
+                            ruleOfDiv = `<h2 class="rule-of-chat-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Rule of 10!")+`</h2>
+                                        <button type="button" data-roll="roll-again" class="rule-of-ten">`+game.i18n.localize("UNISYSTEMCINEMATIC.Roll Again")+`</button>`
+                            totalResult = 10
+                        }
+                        if (roll.result == 1) {
+                            ruleOfDiv = `<h2 class="rule-of-chat-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Rule of 1!")+`</h2>
+                                        <button type="button" data-roll="roll-again" class="rule-of-one">`+game.i18n.localize("UNISYSTEMCINEMATIC.Roll Again")+`</button>`
+                            totalResult = 1
+                        }
+
+                        let chatContent = `<form>
+                                                <h2>`+game.i18n.localize(`UNISYSTEMCINEMATIC.${attributeLabel}`)+` `+game.i18n.localize("UNISYSTEMCINEMATIC.Roll")+` [${this.actor.system[attributeLabel.toLowerCase()].value}]</h2>
+
+                                                <table class="unisystemcinematicbymmfo-chat-roll-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>`+game.i18n.localize("UNISYSTEMCINEMATIC.Roll")+`</th>
+                                                            <th>`+game.i18n.localize("UNISYSTEMCINEMATIC.Modifier")+`</th>
+                                                            <th>`+game.i18n.localize("UNISYSTEMCINEMATIC.Result")+`</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-roll="dice-result">[[${roll.result}]]</td>
+                                                            <td data-roll="modifier">${rollMod}</td>
+                                                            <td data-roll="dice-total">${totalResult}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;">
+                                                    ${ruleOfDiv}
+                                                </div>
+                                            </form>`
+
+                        ChatMessage.create({
+                            /* type: CONST.CHAT_MESSAGE_TYPES.ROLL, */
+                            user: game.user.id,
+                            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                            flavor: `<div class="unisystemcinematicbymmfo-tags-flex-container">${tags.join('')}</div>`,
+                            content: chatContent,
+                            roll: roll
+                          })
+                        
+                    }
+                }
+            },
+            default: 'two',
+            close: html => console.log()
+        }, dialogOptions)
+
+        d.render(true)
+    }
+
+
     _onDamageRoll(event) {
         event.preventDefault()
         let element = event.currentTarget
@@ -449,6 +678,212 @@ export class unisystemCreatureSheet extends ActorSheet {
         }, dialogOptions)
 
         d.render(true)
+    }
+
+    async _onManeuverDamageRoll(event) {
+        console.log("Yes, I'm here")
+        event.preventDefault()
+        let element = event.currentTarget
+        // let itemId = element.dataset.itemId
+        let itemId = element.closest('.item').dataset.itemId
+        let actorData = this.actor.system
+        let actor = this.actor
+        let myPreSelectedWeapon = "none"
+        let myModifiers = 0
+        let myBaseDamages = ""
+        let myManeuver
+        let myWeapon
+
+        console.log("actor.maneuver", actor.maneuver)
+
+        if (actor.maneuver != null) {
+            for (const item of actor.maneuver) {
+                console.log("J'étudie les maneuvers")
+                if (item._id == itemId) {
+                    myManeuver = item
+                }
+            }
+            myPreSelectedWeapon = myManeuver.system.weapon
+            myModifiers = myManeuver.system.bonus
+            myBaseDamages = myManeuver.system.baseDamages
+        }
+
+        console.log("actor.weapon", actor.weapon)
+
+        // if (myPreSelectedWeapon == undefined) return
+
+        /* avec ce code le chargeur n'est pas mis à jour !
+        if (actor.weapon != null) {
+            for (const item of actor.weapon) {
+                console.log("J'étudie les weapons")
+                if (item._id == myPreSelectedWeapon) {
+                    myWeapon = item
+                }
+            }
+        }
+        */
+
+        for (let weapon of this.actor.items.filter(item => item.type === 'weapon')) {
+            if (weapon.id == myPreSelectedWeapon) {
+                myWeapon = weapon
+            }
+        }
+
+        // Create Classes for Dialog Box
+        // let mode = game.settings.get("unisystemcinematicbymmfo", "light-mode") ? "light-mode" : ""
+        // let dialogOptions = {classes: ["dialog", "unisystemcinematicbymmfo", mode]}
+        // let dialogOptions = {classes: ["dialog", "unisystemcinematicbymmfo", `${game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "afmbe" ? "afmbe" : (game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "witchcraft" ? "witchcraft" : (game.settings.get("unisystemcinematicbymmfo", "gamesystem") === "terraprimate" ? "terraprimate" : ""))}`]}
+        let gamesettings = game.settings.get("unisystemcinematicbymmfo", "gamesystem");
+        let gamesystemclass = gamesettings === "buffy" ? "buffy" : (gamesettings === "angel" ? "angel" : (gamesettings === "armyofdarkness" ? "armyofdarkness" : (gamesettings === "cityofheroes" ? "cityofheroes" : (gamesettings === "ghostsofalbion" ? "ghostsofalbion" : (gamesettings === "eldritchskies" ? "eldritchskies" : "")))));
+        let dialogOptions = {classes: ["dialog", "unisystemcinematicbymmfo", gamesystemclass]}
+
+
+        // Create Dialog Prompt
+        let d = new Dialog({
+            title: game.i18n.localize('UNISYSTEMCINEMATIC.Weapon Roll'),
+            content: `<div class="unisystemcinematicbymmfo-dialog-menu">
+
+                            <div class="unisystemcinematicbymmfo-dialog-menu-text-box">
+                                <p><strong>`+game.i18n.localize("UNISYSTEMCINEMATIC.If a ranged weapon")+`</strong>`+game.i18n.localize("UNISYSTEMCINEMATIC.select how many shots")+`</p>
+
+                                <p>`+game.i18n.localize("UNISYSTEMCINEMATIC.Otherwise, leave default and click roll.")+`</p>
+                            </div>
+
+                            <div>
+                                <h2>`+game.i18n.localize("UNISYSTEMCINEMATIC.Options")+`</h2>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>`+game.i18n.localize("UNISYSTEMCINEMATIC.# of Shots")+`</th>
+                                            <td>
+                                                <input type="number" id="shotNumber" name="shotNumber" value="0">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>`+game.i18n.localize("UNISYSTEMCINEMATIC.Firing Mode")+`</th>
+                                            <td>
+                                                <select id="firingMode" name="firingMode">
+                                                    <option>`+game.i18n.localize("UNISYSTEMCINEMATIC.None/Melee")+`</option>
+                                                    <option>`+game.i18n.localize("UNISYSTEMCINEMATIC.Semi-Auto")+`</option>
+                                                    <option>`+game.i18n.localize("UNISYSTEMCINEMATIC.Burst Fire")+`</option>
+                                                    <option>`+game.i18n.localize("UNISYSTEMCINEMATIC.Auto-Fire")+`</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                    <div>`,
+
+            buttons: {
+                one: {
+                    label: game.i18n.localize("UNISYSTEMCINEMATIC.Cancel"),
+                    callback: html => console.log('Cancelled')
+                },
+                two: {
+                    label: game.i18n.localize("UNISYSTEMCINEMATIC.Roll"),
+                    callback: async html => {
+                        // Grab Values from Dialog
+                        let shotNumber = html[0].querySelector('#shotNumber').value
+                        let firingMode = html[0].querySelector('#firingMode').value
+
+                        let roll = new Roll(myWeapon.system.damage_string)
+                        await roll.roll()
+                        await game?.dice3d?.showForRoll(roll)
+
+                        let tags = [`<div>`+game.i18n.localize("UNISYSTEMCINEMATIC.Damage Roll")+`</div>`]
+                        if (firingMode != game.i18n.localize("UNISYSTEMCINEMATIC.None/Melee")) {tags.push(`<div>${firingMode}: ${shotNumber}</div>`)}
+                        if (myWeapon.system.damage_types[myWeapon.system.damage_type] != 'None') {tags.push(`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.${myWeapon.system.damage_types[myWeapon.system.damage_type]}`)+`</div>`)}
+
+                        // Reduce Fired shots from current load chamber
+                        if (shotNumber > 0) {
+                            switch (myWeapon.system.capacity.value - shotNumber >= 0) {
+                                case true:
+                                    // myWeapon.update({'data.capacity.value': myWeapon.system.capacity.value - shotNumber})
+                                    myWeapon.update({'system.capacity.value': myWeapon.system.capacity.value - shotNumber})
+                                    break
+
+                                case false: 
+                                    return ui.notifications.info(game.i18n.localize("UNISYSTEMCINEMATIC.You do not have enough ammo loaded to fire")+` ${shotNumber} `+game.i18n.localize("UNISYSTEMCINEMATIC.rounds!"))
+                            }
+                        }
+
+                        // Create Chat Content
+                        let chatContent = `<div>
+                                                <h2>${myWeapon.name}</h2>
+
+                                                <table class="unisystemcinematicbymmfo-chat-roll-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>`+game.i18n.localize("UNISYSTEMCINEMATIC.Damage")+`</th>
+                                                            <th>`+game.i18n.localize("UNISYSTEMCINEMATIC.Detail")+`</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>[[${roll.result}]]</td>
+                                                            <td>${myWeapon.system.damage_string}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>`
+
+                        ChatMessage.create({
+                            /* type: CONST.CHAT_MESSAGE_TYPES.ROLL, */
+                            user: game.user.id,
+                            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                            flavor: `<div class="unisystemcinematicbymmfo-tags-flex-container-item">${tags.join('')}</div>`,
+                            content: chatContent,
+                            roll: roll
+                        })
+                    }
+                }
+            },
+            default: "two",
+            close: html => console.log()
+        }, dialogOptions)
+
+        d.render(true)
+    }
+
+
+    async _onArmorRoll(event) {
+        event.preventDefault()
+        let element = event.currentTarget
+        let equippedItem = this.actor.items.get(element.closest('.item').dataset.itemId)
+
+        let roll = new Roll(equippedItem.system.armor_value)
+        await roll.roll()
+        await game?.dice3d?.showForRoll(roll)
+
+        // Create Chat Content
+        let chatContent = `<div>
+                                <h2>${equippedItem.name}</h2>
+
+                                <table class="unisystemcinematicbymmfo-chat-roll-table">
+                                    <thead>
+                                        <tr>
+                                            <th>`+game.i18n.localize("UNISYSTEMCINEMATIC.Result")+`</th>
+                                            <th>`+game.i18n.localize("UNISYSTEMCINEMATIC.Detail")+`</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>[[${roll.result}]]</td>
+                                            <td>${equippedItem.system.armor_value}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>`
+
+        ChatMessage.create({
+            /* type: CONST.CHAT_MESSAGE_TYPES.ROLL, */
+            user: game.user.id,
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: chatContent,
+            roll: roll
+        })
+
     }
 
     async _onArmorRoll(event) {

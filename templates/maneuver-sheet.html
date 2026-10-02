@@ -15,7 +15,51 @@
                 <table>
                     <tbody>
                         <tr>
-                            <th>{{ localize "UNISYSTEMCINEMATIC.Bonus" }}</th>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.primaryAttribute" }}</th>
+                            <td>
+                                <select id="attribute" name="system.attribute" data-type="String">
+                                {{selectOptions primaryAttributeChoices selected=item.system.attribute labelAttr="label"}}
+                                </select>
+                            </td>
+                        </tr>
+                        <th>{{ localize "UNISYSTEMCINEMATIC.Skill" }}</th>
+                            <td>
+                                <select id="skill" name="system.skill" data-type="String">
+                                {{selectOptions skillChoices selected=item.system.skill labelAttr="label"}}
+                                </select>
+                            </td>
+                        </tr>
+                        <th>{{ localize "UNISYSTEMCINEMATIC.Aspect (NPC)" }}</th>
+                            <td>
+                                <select id="aspect" name="system.aspect" data-type="String">
+                                {{selectOptions aspectChoices selected=item.system.aspect labelAttr="label"}}
+                                </select>
+                            </td>
+                        </tr>
+                        <th>{{ localize "UNISYSTEMCINEMATIC.Quality" }}</th>
+                            <td>
+                                <select id="quality" name="system.quality" data-type="String">
+                                {{selectOptions qualityChoices selected=item.system.quality labelAttr="label"}}
+                                </select>
+                            </td>
+                        </tr>
+                        <th>{{ localize "UNISYSTEMCINEMATIC.Drawback" }}</th>
+                            <td>
+                                <select id="drawback" name="system.drawback" data-type="String">
+                                {{selectOptions drawbackChoices selected=item.system.drawback labelAttr="label"}}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.Weapon" }}</th>
+                            <td>
+                                <select id="weapon" name="system.weapon" data-type="String">
+                                {{selectOptions weaponChoices selected=item.system.weapon labelAttr="label"}}
+                                </select>  
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ localize "UNISYSTEMCINEMATIC.Modifiers" }}</th>
                             <td><input type="number" name="system.bonus" value="{{item.system.bonus}}"></td>
                         </tr>
                         <tr>

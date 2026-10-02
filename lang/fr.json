@@ -9,6 +9,12 @@
   "UNISYSTEMCINEMATIC.Intelligence": "Intelligence",
   "UNISYSTEMCINEMATIC.Perception": "Perception",
   "UNISYSTEMCINEMATIC.Willpower": "Volonté",
+  "UNISYSTEMCINEMATIC.strength": "Force",
+  "UNISYSTEMCINEMATIC.dexterity": "Dextérité",
+  "UNISYSTEMCINEMATIC.constitution": "Constitution",
+  "UNISYSTEMCINEMATIC.intelligence": "Intelligence",
+  "UNISYSTEMCINEMATIC.perception": "Perception",
+  "UNISYSTEMCINEMATIC.willpower": "Volonté",
   "UNISYSTEMCINEMATIC.Secondary Attributes": "Autres",
   "UNISYSTEMCINEMATIC.Life Points": "Points de Vie",
   "UNISYSTEMCINEMATIC.Endurance": "Endurance",
@@ -28,6 +34,7 @@
   "UNISYSTEMCINEMATIC.Power": "Capacité spéciale",
   "UNISYSTEMCINEMATIC.Maneuvers": "Manœuvres de combat",
   "UNISYSTEMCINEMATIC.Maneuver": "Manœuvre",
+  "UNISYSTEMCINEMATIC.Modifiers": "Modificateurs",
 
   "UNISYSTEMCINEMATIC.Bonus": "Bonus",
   "UNISYSTEMCINEMATIC.BaseDamage": "Dégâts base",
@@ -71,6 +78,11 @@
   "UNISYSTEMCINEMATIC.Quantity": "Quantité",
   "UNISYSTEMCINEMATIC.RP": "PR",
   "UNISYSTEMCINEMATIC.Space": "Espace",
+
+  "UNISYSTEMCINEMATIC.primaryAttribute": "Attribut",
+  "UNISYSTEMCINEMATIC.Skill": "Compétence",
+  "UNISYSTEMCINEMATIC.Weapon": "Arme",
+
 
   "UNISYSTEMCINEMATIC.quality": "qualité",
   "UNISYSTEMCINEMATIC.drawback": "désavantage",
@@ -221,10 +233,13 @@
   "UNISYSTEMCINEMATIC.Delete Item": "Supprimer l'entrée",
 
   "UNISYSTEMCINEMATIC.Quality": "Qualité",
+  "UNISYSTEMCINEMATIC.Drawback": "Désavantage",
   "UNISYSTEMCINEMATIC.Pulling Strings": "Appuis & Ressources",
   "UNISYSTEMCINEMATIC.Other": "Autre",
   "UNISYSTEMCINEMATIC.Psychic Ability": "Capacité Psi",
   "UNISYSTEMCINEMATIC.Ritual": "Rituel",
+
+  "UNISYSTEMCINEMATIC.Aspect (NPC)": "Aspect",
 
   "UNISYSTEMCINEMATIC.Current AP": "PA courants",
   "UNISYSTEMCINEMATIC.Lvl": "Niv",
