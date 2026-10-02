@@ -786,14 +786,18 @@ export class unisystemCreatureSheet extends ActorSheet {
                         // Grab Values from Dialog
                         let shotNumber = html[0].querySelector('#shotNumber').value
                         let firingMode = html[0].querySelector('#firingMode').value
-
-                        let roll = new Roll(myWeapon.system.damage_string)
+                        let roll
+                        if (myWeapon) {
+                            roll = new Roll(myWeapon.system.damage_string)
+                        } else {
+                            roll = new Roll(myBaseDamages)
+                        }
                         await roll.roll()
                         await game?.dice3d?.showForRoll(roll)
 
                         let tags = [`<div>`+game.i18n.localize("UNISYSTEMCINEMATIC.Damage Roll")+`</div>`]
                         if (firingMode != game.i18n.localize("UNISYSTEMCINEMATIC.None/Melee")) {tags.push(`<div>${firingMode}: ${shotNumber}</div>`)}
-                        if (myWeapon.system.damage_types[myWeapon.system.damage_type] != 'None') {tags.push(`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.${myWeapon.system.damage_types[myWeapon.system.damage_type]}`)+`</div>`)}
+                        if (myWeapon && myWeapon.system.damage_types[myWeapon.system.damage_type] != 'None') {tags.push(`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.${myWeapon.system.damage_types[myWeapon.system.damage_type]}`)+`</div>`)}
 
                         // Reduce Fired shots from current load chamber
                         if (shotNumber > 0) {
@@ -808,9 +812,21 @@ export class unisystemCreatureSheet extends ActorSheet {
                             }
                         }
 
+                        let myWeaponName = game.i18n.localize("UNISYSTEMCINEMATIC.Improvised weapon") 
+                        if (myWeapon) {
+                            myWeaponName = myWeapon.name
+                        }
+
+                        let myWeaponDamage
+                        if (myWeapon) {
+                            myWeaponDamage = myWeapon.system.damage_string
+                        } else {
+                            myWeaponDamage = myBaseDamages
+                        }
+
                         // Create Chat Content
                         let chatContent = `<div>
-                                                <h2>${myWeapon.name}</h2>
+                                                <h2>${myWeaponName}</h2>
 
                                                 <table class="unisystemcinematicbymmfo-chat-roll-table">
                                                     <thead>
@@ -822,7 +838,7 @@ export class unisystemCreatureSheet extends ActorSheet {
                                                     <tbody>
                                                         <tr>
                                                             <td>[[${roll.result}]]</td>
-                                                            <td>${myWeapon.system.damage_string}</td>
+                                                            <td>${myWeaponDamage}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

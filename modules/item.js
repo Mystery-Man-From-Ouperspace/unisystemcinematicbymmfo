@@ -79,6 +79,8 @@ export class unisystemItem extends Item {
         const itemData = this.system
         const myItem = this
 
+        console.log("itemData", itemData)
+
         const actorId = this.parent.id
 
         console.log("actorId", actorId)
@@ -282,12 +284,18 @@ export class unisystemItem extends Item {
                 }
 
                 if (myWeapon != undefined) {
-                    baseDamages = `${myWeapon.system.damage}*${actorData[myWeapon.system.damage_cha_multiplier].value + (myWeapon.system.damage_cha_multiplier_bonus) + (myWeapon.system.damage_type == 1 ? 1 : 0)}`
+                    if (myWeapon.system.damage_cha_multiplier != "none") {
+                        baseDamages = `${myWeapon.system.damage}*${actorData[myWeapon.system.damage_cha_multiplier].value + (myWeapon.system.damage_cha_multiplier_bonus) + (myWeapon.system.damage_type == 1 ? 1 : 0)}`
+                    } else {
+                        baseDamages = `${myWeapon.system.damage}`
+                    }
                 }
             }
         }
 
-        /* A essayer et débugguer plus tard
+
+        /*
+        A essayer et débugguer plus tard
         for (let weapon of myParent.items.filter(item => item.type === 'weapon')) {
             if (weapon.id == key) {
                 myWeapon = weapon
@@ -300,6 +308,7 @@ export class unisystemItem extends Item {
 
         }
         */
+
 
         // Build Damage String by combining Damage Entry with Damage Multiplier Entry (Looks at Actor to grab Multiplier Value)
         // This does not apply to weapons on vehicles
