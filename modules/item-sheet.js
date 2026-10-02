@@ -190,7 +190,7 @@ export class unisystemItemSheet extends ItemSheet {
             if (myParent.aspect != null) {
                 for (const item of myParent.aspect) {
                     console.log("J'étudie les aspects")
-                    myLabel = item.name
+                    myLabel = item.name+" "+item.system.power
 
                     aspectMenuObj[item._id] = { id: item._id, label: myLabel }
                 }
@@ -223,7 +223,7 @@ export class unisystemItemSheet extends ItemSheet {
             if (myParent.quality != null) {
                 for (const item of myParent.quality) {
                     console.log("J'étudie les qualities")
-                    myLabel = item.name
+                    myLabel = item.name+" "+item.system.cost
 
                     qualityMenuObj[item._id] = { id: item._id, label: myLabel }
                 }
@@ -254,7 +254,7 @@ export class unisystemItemSheet extends ItemSheet {
             if (myParent.drawback != null) {
                 for (const item of myParent.drawback) {
                     console.log("J'étudie les drawbacks")
-                    myLabel = item.name
+                    myLabel = item.name+" "+item.system.cost
 
                     drawbackMenuObj[item._id] = { id: item._id, label: myLabel }
                 }
