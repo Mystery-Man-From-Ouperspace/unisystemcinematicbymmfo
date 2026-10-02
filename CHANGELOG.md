@@ -1,4 +1,4 @@
-0.1.0 (not yet available   )
+0.1.0
 - Added displayed value of quality, drawback, & aspect in maneuver menues
 - Corrected fired shots from current load chamber no more decounted when no chosen weapon from maneuver
 
