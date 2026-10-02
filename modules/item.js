@@ -240,8 +240,8 @@ export class unisystemItem extends Item {
         // Build Damage String by combining Damage Entry with Damage Multiplier Entry (Looks at Actor to grab Multiplier Value)
         // This does not apply to weapons on vehicles
         if (itemData.damage_cha_multiplier != "none" && this.isEmbedded && this.actor.type != 'vehicle') {
-            console.log(this.actor.type)
-            itemData.damage_string = `${itemData.damage}*${actorData[itemData.damage_cha_multiplier].value + (itemData.damage_cha_multiplier_bonus) + (itemData.damage_type == 1 ? 1 : 0)}`
+            console.log(this.actor.type)   
+            itemData.damage_string = `(${itemData.damage})*${actorData[itemData.damage_cha_multiplier].value + itemData.damage_cha_multiplier_bonus + (itemData.damage_type == "1" ? 1 : 0)}`
         }
         else  {
             itemData.damage_string = itemData.damage
@@ -268,6 +268,7 @@ export class unisystemItem extends Item {
         }
 
         console.log("myParent 266", myParent)
+        console.log("actorData", actorData)
 
         let myWeapon
         let baseDamages
@@ -284,8 +285,8 @@ export class unisystemItem extends Item {
                 }
 
                 if (myWeapon != undefined) {
-                    if (myWeapon.system.damage_cha_multiplier != "none") {
-                        baseDamages = `${myWeapon.system.damage}*${actorData[myWeapon.system.damage_cha_multiplier].value + (myWeapon.system.damage_cha_multiplier_bonus) + (myWeapon.system.damage_type == 1 ? 1 : 0)}`
+                    if (myWeapon.system.damage_cha_multiplier != "none" && this.isEmbedded) {
+                        baseDamages = `(${myWeapon.system.damage})*${actorData[myWeapon.system.damage_cha_multiplier].value + myWeapon.system.damage_cha_multiplier_bonus + (myWeapon.system.damage_type == "1" ? 1 : 0)}`
                     } else {
                         baseDamages = `${myWeapon.system.damage}`
                     }
