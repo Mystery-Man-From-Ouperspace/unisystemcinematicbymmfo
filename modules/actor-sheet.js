@@ -982,7 +982,7 @@ export class unisystemActorSheet extends ActorSheet {
                         if (myWeapon && myWeapon.system.damage_types[myWeapon.system.damage_type] != 'None') {tags.push(`<div>`+game.i18n.localize(`UNISYSTEMCINEMATIC.${myWeapon.system.damage_types[myWeapon.system.damage_type]}`)+`</div>`)}
 
                         // Reduce Fired shots from current load chamber
-                        if (shotNumber > 0) {
+                        if (myWeapon && shotNumber > 0) {
                             switch (myWeapon.system.capacity.value - shotNumber >= 0) {
                                 case true:
                                     // myWeapon.update({'data.capacity.value': myWeapon.system.capacity.value - shotNumber})

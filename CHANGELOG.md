@@ -1,4 +1,8 @@
-0.0.8
+0.1.0
+- Added displayed value of quality, drawback, & aspect in maneuver menues
+- Corrected fired shots from current load chamber no more decounted when no chosen weapon from maneuver
+
+0.0.8 et 0.0.9 (only 0.0.9 available from Foundry VTT)
 - Added icons to actors' item sections for best readability
 - Added damage multiplier bonus to weapon items
 - Corrected display right localization of damage type tag in chat for creatures's weapon items
