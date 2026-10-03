@@ -37,6 +37,10 @@
   "UNISYSTEMCINEMATIC.Modifiers": "Modifiers",
 
   "UNISYSTEMCINEMATIC.Bonus": "Bonus",
+  "UNISYSTEMCINEMATIC.Bonus*": "Bonus Points*",
+  "UNISYSTEMCINEMATIC.Malus*": "Malus Points*",
+  "UNISYSTEMCINEMATIC.*": "* if different from Cost",
+
   "UNISYSTEMCINEMATIC.BaseDamage": "Base Damage",
   "UNISYSTEMCINEMATIC.Improvised weapon": "Unknown Weapon",
 

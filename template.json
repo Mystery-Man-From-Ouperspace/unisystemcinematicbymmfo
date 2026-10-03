@@ -734,11 +734,13 @@
         },
         "quality": {
             "templates": ["common"],
+            "bonus": 0,
             "types": ["Quality", "Pulling Strings"],
             "type": ""
         },
         "drawback": {
-            "templates": ["common"]
+            "templates": ["common"],
+            "malus": 0
         },
         "skill": {
             "templates": ["common"],
