@@ -1,4 +1,4 @@
-0.1.1 (to be available)
+0.1.1
 - Added Bonus Points attribute to quality items attributes list
 - Added Malus Points attribute to drawback items attributes list
 - Modified "Points" label to "Cost" to quality/drawback items in this list to reflect the points cost, distinct from the given bonus/malus
