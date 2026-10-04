@@ -295,7 +295,7 @@ export class unisystemActorSheet extends ActorSheet {
         }
     }
 
-     _onAttributeRoll(event) {
+    _onAttributeRoll(event) {
         event.preventDefault()
         let element = event.currentTarget
         let attributeLabel = element.dataset.attributeName
@@ -355,6 +355,7 @@ export class unisystemActorSheet extends ActorSheet {
                                     <tr>
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Roll Modifier")+`</td>
                                         <td class="table-center-align"><input class="attribute-input" type="number" value="0" name="inputModifier" id="inputModifier"></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Skills")+`</td>
@@ -364,6 +365,7 @@ export class unisystemActorSheet extends ActorSheet {
                                                 ${skillOptions.join('')}
                                             </select>
                                         </td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Qualities")+`</td>
@@ -373,6 +375,11 @@ export class unisystemActorSheet extends ActorSheet {
                                                 ${qualityOptions.join('')}
                                             </select>
                                         </td>
+                                        <td class="toggleQuality">
+                                            <label>
+                                                <input type="checkbox" id="toggleQualityBonus"><small>`+game.i18n.localize("UNISYSTEMCINEMATIC.Use as Malus instead")+`</small>
+                                            </label>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Drawbacks")+`</td>
@@ -381,6 +388,11 @@ export class unisystemActorSheet extends ActorSheet {
                                                 <option value="None">`+game.i18n.localize("UNISYSTEMCINEMATIC.None")+`</option>
                                                 ${drawbackOptions.join('')}
                                             </select>
+                                        </td>
+                                        <td class="toggleDrawback">
+                                            <label>
+                                                <input type="checkbox" id="toggleDrawbackMalus"><small>`+game.i18n.localize("UNISYSTEMCINEMATIC.Use as Bonus instead")+`</small>
+                                            </label>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -401,16 +413,27 @@ export class unisystemActorSheet extends ActorSheet {
                         let selectedQuality = this.actor.items.get(html[0].querySelector('#qualitySelect').value)
                         let selectedDrawback = this.actor.items.get(html[0].querySelector('#drawbackSelect').value)
 
+                        let qualityToggled = html[0].querySelector('#toggleQualityBonus').checked
+                        let drawbackToggled = html[0].querySelector('#toggleDrawbackMalus').checked
+
                         // Set values for options
                         // let attributeValue = attributeTestSelect === game.i18n.localize("UNISYSTEMCINEMATIC.Simple") ? actorData[attributeLabel.toLowerCase()].value * 2 : actorData[attributeLabel.toLowerCase()].value
                         let attributeValue = actorData[attributeLabel.toLowerCase()].value
-                        let skillValue = selectedSkill != undefined ? selectedSkill.system.level : 0
-                        let qualityValue = selectedQuality != undefined ? selectedQuality.system.cost : 0
-                        let drawbackValue = selectedDrawback != undefined ? selectedDrawback.system.cost : 0
-                        let statusPenalties = actorData.endurance_points.loss_penalty + actorData.essence.loss_penalty
+                        let skillValue = selectedSkill != undefined ? Math.abs(selectedSkill.system.level) : 0
+                        // let statusPenalties = actorData.endurance_points.loss_penalty + actorData.essence.loss_penalty
+
+                        // Set values for bonus / malus different from Cost
+                        let qualityValue = selectedQuality != undefined ? (selectedQuality.system.bonus && (selectedQuality.system.bonus != selectedQuality.system.cost) ? Math.abs(selectedQuality.system.bonus) : Math.abs(selectedQuality.system.cost)) : 0
+                        let drawbackValue = selectedDrawback != undefined ? (selectedDrawback.system.malus && (selectedDrawback.system.malus != selectedDrawbackystem.cost) ? -1*Math.abs(selectedDrawback.system.malus) : -1*Math.abs(selectedDrawback.system.cost)) : 0
+
+                        // Set toggled values
+                        qualityValue = qualityToggled ? -1*qualityValue : qualityValue
+                        drawbackValue = drawbackToggled ? Math.abs(drawbackValue) : drawbackValue
+                        let ratherAsABonus = drawbackValue > 0 ? game.i18n.localize("UNISYSTEMCINEMATIC.Rather as Bonus") : ""
+                        let ratherAsAMalus = qualityValue < 0 ? game.i18n.localize("UNISYSTEMCINEMATIC.Rather as Malus") : ""
 
                         // Calculate total modifier to roll
-                        let rollMod = (attributeValue + skillValue + qualityValue + userInputModifier) - drawbackValue // + statusPenalties (Cinematic)
+                        let rollMod = attributeValue + skillValue + qualityValue + userInputModifier + drawbackValue //+ statusPenalties
 
                         // Roll Dice
                         let roll = new Roll('1d10')
@@ -426,8 +449,8 @@ export class unisystemActorSheet extends ActorSheet {
                         let ruleOfDiv = ``
                         if (userInputModifier != 0) {tags.push(`<div>`+game.i18n.localize("UNISYSTEMCINEMATIC.User Modifier")+` ${userInputModifier >= 0 ? "+" : ''}${userInputModifier}</div>`)}
                         if (selectedSkill != undefined) {tags.push(`<div>${selectedSkill.name} ${selectedSkill.system.level >= 0 ? '+' : ''}${selectedSkill.system.level}</div>`)}
-                        if (selectedQuality != undefined) {tags.push(`<div>${selectedQuality.name} ${selectedQuality.system.cost >= 0 ? '+' : ''}${selectedQuality.system.cost}</div>`)}
-                        if (selectedDrawback != undefined) {tags.push(`<div>${selectedDrawback.name} ${selectedQuality.system.cost >= 0 ? '-' : '+'}${Math.abs(selectedDrawback.system.cost)}</div>`)}
+                        if (selectedQuality != undefined) {tags.push(`<div>${selectedQuality.name} ${qualityValue > 0 ? '+' : (qualityValue == 0 ? "" : '-')}${Math.abs(qualityValue)} ${ratherAsAMalus}</div>`)}
+                        if (selectedDrawback != undefined) {tags.push(`<div>${selectedDrawback.name} ${drawbackValue > 0 ? '+' : (drawbackValue == 0 ? "" : '-')}${Math.abs(drawbackValue)} ${ratherAsABonus}</div>`)}
 
                         if (roll.result == 10) {
                             ruleOfDiv = `<h2 class="rule-of-chat-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Rule of 10!")+`</h2>
@@ -481,7 +504,10 @@ export class unisystemActorSheet extends ActorSheet {
             close: html => console.log()
         }, dialogOptions)
 
-        d.render(true)
+        d.render(true, {
+            width: 550,
+            height: "auto"
+        })
     }
 
     _onManeuverRoll(event) {
@@ -521,31 +547,32 @@ export class unisystemActorSheet extends ActorSheet {
             },
             strength: {
                 id: "strength",
-                label: "UNISYSTEMCINEMATIC.strength",
+                label: "UNISYSTEMCINEMATIC.Strength",
             },
             dexterity: {
                 id: "dexterity",
-                label: "UNISYSTEMCINEMATIC.dexterity",
+                label: "UNISYSTEMCINEMATIC.Dexterity",
             },
             constitution: {
                 id: "constitution",
-                label: "UNISYSTEMCINEMATIC.constitution",
+                label: "UNISYSTEMCINEMATIC.Constitution",
             },
             intelligence: {
                 id: "intelligence",
-                label: "UNISYSTEMCINEMATIC.intelligence",
+                label: "UNISYSTEMCINEMATIC.Intelligence",
             },
             perception: {
                 id: "perception",
-                label: "UNISYSTEMCINEMATIC.perception",
+                label: "UNISYSTEMCINEMATIC.Perception",
             },
             willpower: {
                 id: "willpower",
-                label: "UNISYSTEMCINEMATIC.willpower",
+                label: "UNISYSTEMCINEMATIC.Willpower",
             }
         })
 
         let attributeLabel = game.i18n.localize(primaryAttributeMenuObj[myPreSelectedAttribute].label)
+        let attributeLabelId = primaryAttributeMenuObj[myPreSelectedAttribute].id
 
         // Create options for Qualities/Drawbacks/Skills
         let skillOptions = []
@@ -616,7 +643,8 @@ export class unisystemActorSheet extends ActorSheet {
                                     <tr>
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Roll Modifier")+`</td>
                                         <td class="table-center-align"><input class="attribute-input" type="number" value="${myModifiers}" name="inputModifier" id="inputModifier"></td>
-                                    </tr>
+
+                                        </tr>
                                     <tr>
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Skills")+`</td>
                                         <td class="table-center-align">
@@ -625,6 +653,7 @@ export class unisystemActorSheet extends ActorSheet {
                                                 ${skillOptions.join('')}
                                             </select>
                                         </td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Qualities")+`</td>
@@ -634,6 +663,11 @@ export class unisystemActorSheet extends ActorSheet {
                                                 ${qualityOptions.join('')}
                                             </select>
                                         </td>
+                                        <td class="toggleQuality">
+                                            <label>
+                                                <input type="checkbox" id="toggleQualityBonus"><small>`+game.i18n.localize("UNISYSTEMCINEMATIC.Use as Malus instead")+`</small>
+                                            </label>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Drawbacks")+`</td>
@@ -642,6 +676,11 @@ export class unisystemActorSheet extends ActorSheet {
                                                 <option value="None">`+game.i18n.localize("UNISYSTEMCINEMATIC.None")+`</option>
                                                 ${drawbackOptions.join('')}
                                             </select>
+                                        </td>
+                                        <td class="toggleDrawback">
+                                            <label>
+                                                <input type="checkbox" id="toggleDrawbackMalus"><small>`+game.i18n.localize("UNISYSTEMCINEMATIC.Use as Bonus instead")+`</small>
+                                            </label>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -662,16 +701,27 @@ export class unisystemActorSheet extends ActorSheet {
                         let selectedQuality = this.actor.items.get(html[0].querySelector('#qualitySelect').value)
                         let selectedDrawback = this.actor.items.get(html[0].querySelector('#drawbackSelect').value)
 
+                        let qualityToggled = html[0].querySelector('#toggleQualityBonus').checked
+                        let drawbackToggled = html[0].querySelector('#toggleDrawbackMalus').checked
+
                         // Set values for options
                         // let attributeValue = attributeTestSelect === game.i18n.localize("UNISYSTEMCINEMATIC.Simple") ? actorData[attributeLabel.toLowerCase()].value * 2 : actorData[attributeLabel.toLowerCase()].value
-                        let attributeValue = actorData[myPreSelectedAttribute.toLowerCase()].value
-                        let skillValue = selectedSkill != undefined ? selectedSkill.system.level : 0
-                        let qualityValue = selectedQuality != undefined ? selectedQuality.system.cost : 0
-                        let drawbackValue = selectedDrawback != undefined ? selectedDrawback.system.cost : 0
+                        let attributeValue = actorData[attributeLabelId.toLowerCase()].value
+                        let skillValue = selectedSkill != undefined ? Math.abs(selectedSkill.system.level) : 0
                         let statusPenalties = actorData.endurance_points.loss_penalty + actorData.essence.loss_penalty
 
+                        // Set values for bonus / malus different from Cost
+                        let qualityValue = selectedQuality != undefined ? (selectedQuality.system.bonus && (selectedQuality.system.bonus != selectedQuality.system.cost) ? Math.abs(selectedQuality.system.bonus) : Math.abs(selectedQuality.system.cost)) : 0
+                        let drawbackValue = selectedDrawback != undefined ? (selectedDrawback.system.malus && (selectedDrawback.system.malus != selectedDrawbackystem.cost) ? -1*Math.abs(selectedDrawback.system.malus) : -1*Math.abs(selectedDrawback.system.cost)) : 0
+
+                        // Set toggled values
+                        qualityValue = qualityToggled ? -1*qualityValue : qualityValue
+                        drawbackValue = drawbackToggled ? Math.abs(drawbackValue) : drawbackValue
+                        let ratherAsABonus = drawbackValue > 0 ? game.i18n.localize("UNISYSTEMCINEMATIC.Rather as Bonus") : ""
+                        let ratherAsAMalus = qualityValue < 0 ? game.i18n.localize("UNISYSTEMCINEMATIC.Rather as Malus") : ""
+
                         // Calculate total modifier to roll
-                        let rollMod = (attributeValue + skillValue + qualityValue + userInputModifier) - drawbackValue // + statusPenalties (Cinematic)
+                        let rollMod = attributeValue + skillValue + qualityValue + userInputModifier + drawbackValue // + statusPenalties
 
                         // Roll Dice
                         let roll = new Roll('1d10')
@@ -687,8 +737,8 @@ export class unisystemActorSheet extends ActorSheet {
                         let ruleOfDiv = ``
                         if (userInputModifier != 0) {tags.push(`<div>`+game.i18n.localize("UNISYSTEMCINEMATIC.User Modifier")+` ${userInputModifier >= 0 ? "+" : ''}${userInputModifier}</div>`)}
                         if (selectedSkill != undefined) {tags.push(`<div>${selectedSkill.name} ${selectedSkill.system.level >= 0 ? '+' : ''}${selectedSkill.system.level}</div>`)}
-                        if (selectedQuality != undefined) {tags.push(`<div>${selectedQuality.name} ${selectedQuality.system.cost >= 0 ? '+' : ''}${selectedQuality.system.cost}</div>`)}
-                        if (selectedDrawback != undefined) {tags.push(`<div>${selectedDrawback.name} ${selectedQuality.system.cost >= 0 ? '-' : '+'}${Math.abs(selectedDrawback.system.cost)}</div>`)}
+                        if (selectedQuality != undefined) {tags.push(`<div>${selectedQuality.name} ${qualityValue > 0 ? '+' : (qualityValue == 0 ? "" : '-')}${Math.abs(qualityValue)} ${ratherAsAMalus}</div>`)}
+                        if (selectedDrawback != undefined) {tags.push(`<div>${selectedDrawback.name} ${drawbackValue > 0 ? '+' : (drawbackValue == 0 ? "" : '-')}${Math.abs(drawbackValue)} ${ratherAsABonus}</div>`)}
 
                         if (roll.result == 10) {
                             ruleOfDiv = `<h2 class="rule-of-chat-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Rule of 10!")+`</h2>
@@ -702,7 +752,7 @@ export class unisystemActorSheet extends ActorSheet {
                         }
 
                         let chatContent = `<form>
-                                                <h2>`+game.i18n.localize(`UNISYSTEMCINEMATIC.${attributeLabel}`)+` `+game.i18n.localize("UNISYSTEMCINEMATIC.Roll")+` [${actorData[attributeLabel.toLowerCase()].value}]</h2>
+                                                <h2>`+attributeLabel+` `+game.i18n.localize("UNISYSTEMCINEMATIC.Roll")+` [${actorData[attributeLabelId.toLowerCase()].value}]</h2>
 
                                                 <table class="unisystemcinematicbymmfo-chat-roll-table">
                                                     <thead>
@@ -742,7 +792,10 @@ export class unisystemActorSheet extends ActorSheet {
             close: html => console.log()
         }, dialogOptions)
 
-        d.render(true)
+        d.render(true, {
+            width: 550,
+            height: "auto"
+        })
 
     }
 

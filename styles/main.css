@@ -1138,3 +1138,13 @@ document.body.className = (myVar == 5 ? "aegis" : "ndd");
     font-family: "WhosFrankRegular";
   }
 */
+
+ label {
+    display: flex;
+    align-items: center;
+ }
+
+ input[type=checkbox] #toggleQualityBonus,
+ input[type=checkbox] #toggleDrawbackMalus {
+    flex: none;
+ }
