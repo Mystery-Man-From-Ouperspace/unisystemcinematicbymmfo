@@ -1,3 +1,6 @@
+0.1.2
+- Modified some small label things
+
 0.1.1
 - Added Bonus Points attribute to quality items attributes list
 - Added Malus Points attribute to drawback items attributes list

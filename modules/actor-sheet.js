@@ -644,7 +644,7 @@ export class unisystemActorSheet extends ActorSheet {
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Roll Modifier")+`</td>
                                         <td class="table-center-align"><input class="attribute-input" type="number" value="${myModifiers}" name="inputModifier" id="inputModifier"></td>
 
-                                        </tr>
+                                    </tr>
                                     <tr>
                                         <td class="table-bold-text">`+game.i18n.localize("UNISYSTEMCINEMATIC.Skills")+`</td>
                                         <td class="table-center-align">
