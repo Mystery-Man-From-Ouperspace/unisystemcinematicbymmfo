@@ -141,6 +141,7 @@
  .buffy .unisystemcinematicbymmfo-dialog-menu h1,
  .buffy .unisystemcinematicbymmfo-dialog-menu h2 {
      font-family: "MasonRegular";
+     font-size: medium;
      width: 100%;
  }
 
@@ -156,6 +157,7 @@
  .eldritchskies .unisystemcinematicbymmfo-dialog-menu h1,
  .eldritchskies .unisystemcinematicbymmfo-dialog-menu h2 {
      font-family: "PeignotBold";
+     font-size: medium;
      width: 100%;
  }
  .unisystemcinematicbymmfo.armyofdarkness h1,
@@ -163,6 +165,7 @@
  .armyofdarkness .unisystemcinematicbymmfo-dialog-menu h1,
  .armyofdarkness .unisystemcinematicbymmfo-dialog-menu h2 {
      font-family: "AtticRegular";
+     font-size: medium;
      width: 100%;
  }
 
@@ -571,6 +574,7 @@
      z-index: 5;
      font-family: "AtticRegular";
      font-size: x-large;
+     font-size: large;
      border-radius: 3px;
      padding: 2px;
  }
@@ -718,6 +722,7 @@
    .unisystemcinematicbymmfo.armyofdarkness #characterTypeSelect {
      font-family: "AtticRegular";
      font-size: x-large;
+     font-size: large;
      text-align: center !important;
  }
 
@@ -778,6 +783,7 @@
      align-items: center;
      justify-content: center;
      font-family: "MasonRegular";
+     font-size: medium;
  }
   .unisystemcinematicbymmfo.ghostsofalbion .encumbrance-resource {
      display: flex;
@@ -792,6 +798,7 @@
      align-items: center;
      justify-content: center;
      font-family: "PeignotBold";
+     font-size: medium;
  }
    .unisystemcinematicbymmfo.armyofdarkness .encumbrance-resource {
      display: flex;
@@ -799,6 +806,7 @@
      align-items: center;
      justify-content: center;
      font-family: "AtticRegular";
+     font-size: medium;
  }
 
  .unisystemcinematicbymmfo .encumbrance-resource div {
