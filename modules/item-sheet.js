@@ -80,27 +80,27 @@ export class unisystemItemSheet extends ItemSheet {
             },
             strength: {
                 id: "strength",
-                label: "UNISYSTEMCINEMATIC.strength",
+                label: "UNISYSTEMCINEMATIC.Strength",
             },
             dexterity: {
                 id: "dexterity",
-                label: "UNISYSTEMCINEMATIC.dexterity",
+                label: "UNISYSTEMCINEMATIC.Dexterity",
             },
             constitution: {
                 id: "constitution",
-                label: "UNISYSTEMCINEMATIC.constitution",
+                label: "UNISYSTEMCINEMATIC.Constitution",
             },
             intelligence: {
                 id: "intelligence",
-                label: "UNISYSTEMCINEMATIC.intelligence",
+                label: "UNISYSTEMCINEMATIC.Intelligence",
             },
             perception: {
                 id: "perception",
-                label: "UNISYSTEMCINEMATIC.perception",
+                label: "UNISYSTEMCINEMATIC.Perception",
             },
             willpower: {
                 id: "willpower",
-                label: "UNISYSTEMCINEMATIC.willpower",
+                label: "UNISYSTEMCINEMATIC.Willpower",
             }
         })
 

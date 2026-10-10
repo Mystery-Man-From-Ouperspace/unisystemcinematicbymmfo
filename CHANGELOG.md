@@ -8,7 +8,7 @@
 - Added when this checkbox is checked, selected quality is used as a malus to the roll
 - Modified Attribute Roll dialog, adding "Use as Bonus instead" checkbox beside "Drawbacks" menu
 - Added when this checkbox is checked, selected drawback is used as a bonus to the roll
-- Added tags for quality used as malus an drawback used as bonus
+- Added tags for quality used as malus and drawback used as bonus
 - Corrected some corrections
 
 0.1.0
