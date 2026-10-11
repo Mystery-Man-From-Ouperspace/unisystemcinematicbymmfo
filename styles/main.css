@@ -783,30 +783,27 @@
      align-items: center;
      justify-content: center;
      font-family: "MasonRegular";
-     font-size: medium;
  }
-  .unisystemcinematicbymmfo.ghostsofalbion .encumbrance-resource {
+ .unisystemcinematicbymmfo.ghostsofalbion .encumbrance-resource {
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content: center;
      font-family: "AlexaStdRegular";
  }
-  .unisystemcinematicbymmfo.eldritchskies .encumbrance-resource {
+ .unisystemcinematicbymmfo.eldritchskies .encumbrance-resource {
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content: center;
      font-family: "PeignotBold";
-     font-size: medium;
  }
-   .unisystemcinematicbymmfo.armyofdarkness .encumbrance-resource {
+ .unisystemcinematicbymmfo.armyofdarkness .encumbrance-resource {
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content: center;
      font-family: "AtticRegular";
-     font-size: medium;
  }
 
  .unisystemcinematicbymmfo .encumbrance-resource div {

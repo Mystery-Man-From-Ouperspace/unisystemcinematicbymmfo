@@ -1,5 +1,6 @@
 0.1.2
 - Modified some small label things
+- Modified font size
 
 0.1.1
 - Added Bonus Points attribute to quality items attributes list
