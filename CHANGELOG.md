@@ -1,4 +1,5 @@
 0.1.3 (to be available)
+- Added icons for lights (I recommend you to use Light Sources module by brunocalado)
 - Modified better visibility sheet-nav items font now white in dark mode
 
 0.1.2
