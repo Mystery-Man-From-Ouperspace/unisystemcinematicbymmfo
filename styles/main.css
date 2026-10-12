@@ -667,6 +667,19 @@
      padding: 5px 0;
  }
 
+
+
+
+
+ .unisystemcinematicbymmfo #coremenu,
+ .unisystemcinematicbymmfo #equipmentmenu,
+ .unisystemcinematicbymmfo #resourcesmenu {
+    color: white;
+}
+
+
+
+
  .unisystemcinematicbymmfo .resource-values {
      display: flex;
      flex-direction: row;
@@ -984,6 +997,21 @@ body.theme-light .unisystemcinematicbymmfo .sheet-flex-container {
 body.theme-light .unisystemcinematicbymmfo .sheet-sidebar {
     background: none;
 }
+
+
+
+
+
+ body.theme-light .unisystemcinematicbymmfo #coremenu,
+ body.theme-light .unisystemcinematicbymmfo #equipmentmenu,
+ body.theme-light .unisystemcinematicbymmfo #resourcesmenu {
+    color: rgb(0, 0, 0); 
+}
+
+
+
+
+
 
 body.theme-light .unisystemcinematicbymmfo .weapon-table,
 body.theme-light .unisystemcinematicbymmfo .item-table,
