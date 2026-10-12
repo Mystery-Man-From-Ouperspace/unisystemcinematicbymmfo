@@ -24,6 +24,10 @@ https://www.drivethrurpg.com/browse/pub/10/Eden-Studios/subcategory/57_60/All-Fl
 
 ****
 
+All icons from https://game-icons.net and https://creativecommons.org/licenses/by/3.0/ licenced
+
+****
+
 <figure>
     <img src="images/conspiracyxmmfo-dark-mode.png">
     <figcaption>Dark Mode (Default Setting)</figcaption>
