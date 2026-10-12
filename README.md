@@ -1,6 +1,6 @@
 # UNISYSTEM CINEMATIC BY MMFO
 
-A fanmade FoundryVTT system to play Buffy, Angel, Army of Darkness, City of Heroes, Ghosts of Albion, & Eldritch Skies by Eden Studios.
+A fanmade FoundryVTT system to play Buffy, Angel, Army of Darkness, City of Heroes, Ghosts of Albion by Eden Studios, & Eldritch Skies.
 
 (No Eden Studios IP infringement).
 
