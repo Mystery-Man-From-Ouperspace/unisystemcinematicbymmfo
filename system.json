@@ -15,6 +15,19 @@
     ],
     "esmodules": ["modules/main.js"],
     "styles": ["styles/main.css"],
+    "packs": [
+      {   
+        "name": "unisystem-lights",
+        "label": "Unisystem - Lighs",
+        "system": "unisystemcinematicbymmfo",
+        "path": "packs/unisystem-lights",
+        "type": "Item",
+        "ownership": {
+          "PLAYER": "OBSERVER",
+          "ASSISTANT": "OWNER"
+        }
+      }
+    ],
     "languages": [
         {
           "lang": "en",
