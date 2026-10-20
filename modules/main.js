@@ -23,7 +23,7 @@ Hooks.once("init", async function() {
 	 * Set an initiative formula for the system
 	 * @type {String}
 	 */
-	CONFIG.Combat.initiative = {
+	    CONFIG.Combat.initiative = {
         formula: "1d10 + @initiative.value",
         decimals: 0
       };
@@ -91,7 +91,7 @@ Hooks.once("init", async function() {
       });
       */
 
-        game.settings.register("unisystemcinematicbymmfo", "gamesystem", {
+      game.settings.register("unisystemcinematicbymmfo", "gamesystem", {
         name: game.i18n.localize("UNISYSTEMCINEMATIC.Settings.gamesystem.name"),
         hint: game.i18n.localize("UNISYSTEMCINEMATIC.Settings.gamesystem.hint"),
         scope: "world",

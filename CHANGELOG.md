@@ -1,5 +1,5 @@
-0.1.3 (to be available)
-- Added icons for lights (I recommend you to use [Light Sources](https://foundryvtt.com/packages/light-sources) module by brunocalado that I localized to French)
+0.1.3
+- Added icons for lights (I recommend you to use [Light Sources](https://foundryvtt.com/packages/light-sources) module by brunocalado that I helped localized to French)
 - Modified better visibility sheet-nav items font now white in dark mode
 
 0.1.2
